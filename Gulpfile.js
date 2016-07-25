@@ -14,7 +14,7 @@ gulp.task('serve', ['sass'], function() {
     });
 
     // Watches for changes in JS files - hotreload
-    gulp.watch("./js/*.js", ['browserify']);
+    gulp.watch("./client/*.js", ['browserify']);
 
   	// Watches for changes in SCSS files - hotreload
     gulp.watch("./scss/*.scss", ['sass']);
@@ -25,14 +25,14 @@ gulp.task('serve', ['sass'], function() {
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
-  return gulp.src("./scss/*.scss")
+  return gulp.src("./scss/style.scss")
     .pipe(sass())
-    .pipe(gulp.dest("./public/css"))
+    .pipe(gulp.dest("./public"))
     .pipe(browserSync.stream());
 });
 
 gulp.task('browserify', function () {
-  return browserify('./js/app.js')
+  return browserify('./client/app.js')
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(buffer())
