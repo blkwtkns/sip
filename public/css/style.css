@@ -1,0 +1,8 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box; }
+
+body {
+  background: #ccc;
+  color: #fff; }
