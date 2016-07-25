@@ -10,3 +10,5 @@ Modules used in this setup include:
 - gulp-uglify
 - vinyl-buffer
 - vinyl-source-stream
+
+Will add an image optimizer soon!
