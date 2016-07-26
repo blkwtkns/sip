@@ -1,32 +1,25 @@
-require('angular')
-var MainController = require('./controllers/MainController')
+require('angular');
+
+var MainController = require('./controllers/MainController');
+var TestController = require('./controllers/TestController');
+
+var configOptions = [
+	'$routeProvider',
+	function($routeProvider) {
+		// all routes are currently from the public folder
+		$routeProvider
+	    .when('/test', {
+	      templateUrl: './partials/test.html',
+	      controller: 'TestController'
+	    })
+
+	}
+]
 
 angular.module('app', [
 	require('angular-route'),
 	require('angular-animate')
 	])
 	.controller('MainController', ['$scope', '$http', MainController])
-	// .directive('recipeList', recipeList)
- //  .directive('filterOptions', filterOptions)
- //  .directive('searchIngredients', searchIngredients);
-
-// function recipeList() {
-//   return {
-//     restrict: 'E',
-//     templateUrl: '../app/directives/recipe-list.html'
-//   }
-// }
-
-// function filterOptions() {
-//   return {
-//     restrict: 'E',
-//     templateUrl: '../app/directives/filter-options.html'
-//   }
-// }
-
-// function searchIngredients() {
-//   return {
-//     restrict: 'E',
-//     templateUrl: '../app/directives/search-ingredients.html'
-//   }
-// }
+	.controller('TestController', ['$scope', TestController])
+	.config(configOptions)
