@@ -11,7 +11,7 @@ requireDir('./gulp-tasks');
 
 gulp.task('watch', function() {
 	gulp.watch('./client/**/*.js', ['browserify'])
-	gulp.watch('./sass/style.sass', ['sass'])
+	gulp.watch('./assets/sass/style.sass', ['sass'])
 	gulp.watch('./public/index.html', ['reset'])
 })
 
@@ -23,4 +23,4 @@ gulp.task('gulpmon', function () {
   })
 })
 
-gulp.task('default', ['gulpmon', 'browserify','sass', 'watch'])
+gulp.task('default', ['gulpmon', 'browserify', 'sass', 'imageMin', 'watch'])
