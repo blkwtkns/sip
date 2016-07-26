@@ -1,9 +1,11 @@
-var gulp = require('gulp')
-var connect = require('gulp-connect')
+// Not in use for development, use as recipe
 
-gulp.task('connect', function () {
-	connect.server({
-		root: 'public',
-		port: 3000
-	})
-})
+// var gulp = require('gulp')
+// var connect = require('gulp-connect')
+
+// gulp.task('connect', function () {
+// 	connect.server({
+// 		root: 'public',
+// 		port: 3000
+// 	})
+// })

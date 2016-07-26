@@ -12,7 +12,6 @@ var configOptions = [
 	      templateUrl: './partials/test.html',
 	      controller: 'TestController'
 	    })
-
 	}
 ]
 
