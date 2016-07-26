@@ -1,38 +1,31 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-require('angular')
-var MainController = require('./controllers/MainController')
+require('angular');
+
+var MainController = require('./controllers/MainController');
+var TestController = require('./controllers/TestController');
+
+var configOptions = [
+	'$routeProvider',
+	function($routeProvider) {
+		// all routes are currently from the public folder
+		$routeProvider
+	    .when('/test', {
+	      templateUrl: './partials/test.html',
+	      controller: 'TestController'
+	    })
+
+	}
+]
 
 angular.module('app', [
 	require('angular-route'),
 	require('angular-animate')
 	])
 	.controller('MainController', ['$scope', '$http', MainController])
-	// .directive('recipeList', recipeList)
- //  .directive('filterOptions', filterOptions)
- //  .directive('searchIngredients', searchIngredients);
+	.controller('TestController', ['$scope', TestController])
+	.config(configOptions)
 
-// function recipeList() {
-//   return {
-//     restrict: 'E',
-//     templateUrl: '../app/directives/recipe-list.html'
-//   }
-// }
-
-// function filterOptions() {
-//   return {
-//     restrict: 'E',
-//     templateUrl: '../app/directives/filter-options.html'
-//   }
-// }
-
-// function searchIngredients() {
-//   return {
-//     restrict: 'E',
-//     templateUrl: '../app/directives/search-ingredients.html'
-//   }
-// }
-
-},{"./controllers/MainController":2,"angular":8,"angular-animate":4,"angular-route":6}],2:[function(require,module,exports){
+},{"./controllers/MainController":2,"./controllers/TestController":3,"angular":9,"angular-animate":5,"angular-route":7}],2:[function(require,module,exports){
 module.exports = function($scope, $http) {
 	$scope.ingredient;
 	$scope.error;
@@ -75,6 +68,13 @@ module.exports = function($scope, $http) {
 }
 
 },{}],3:[function(require,module,exports){
+module.exports = function($scope) {
+	$scope.test = 'Hello';
+	$scope.messages = ['1', '2', '3', '4', '5'];
+	$scope.select;
+}
+
+},{}],4:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -4215,11 +4215,11 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
 
 })(window, window.angular);
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":3}],5:[function(require,module,exports){
+},{"./angular-animate":4}],6:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -5290,11 +5290,11 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 require('./angular-route');
 module.exports = 'ngRoute';
 
-},{"./angular-route":5}],7:[function(require,module,exports){
+},{"./angular-route":6}],8:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -37063,8 +37063,8 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":7}]},{},[1]);
+},{"./angular":8}]},{},[1]);
