@@ -12,7 +12,7 @@ var configOptions = [
 	      templateUrl: './partials/test.html',
 	      controller: 'TestController'
 	    })
-			.when('/recipes', {
+			.when('/recipes', 
 				templateUrl: './partials/recipes.html',
 				// controller: 'RecipesController'
 			})
