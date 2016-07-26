@@ -16,7 +16,6 @@ var configOptions = [
 				templateUrl: './partials/recipes.html',
 				// controller: 'RecipesController'
 			})
-
 	}
 ]
 
