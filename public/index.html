@@ -2,7 +2,7 @@
 <html lang="en" ng-app="app">
 <head>
 	<meta charset="UTF-8">
-	<title>Gulp Angular For Newbs</title>
+	<title>Slurpees</title>
 	<script src="/js/main.js"></script>
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -10,11 +10,9 @@
 
 </head>
 <body>
-	<h2 class="title">Gulp Angular For Newbs</h2>
-	<a href="#/test">Test</a>
-	<div ng-view>
+	<h2 class="title">Slurpees: A gulp tasks generator</h2>
 
-	</div>
+
 	<div ng-controller="MainController as MainCtrl" class="container cf">
 		{{name}}
 	  <form ng-submit="searchRecipe()">
@@ -37,23 +35,16 @@
 	      </select>
 
 	      <h3 class='searched-ingredient'>{{filtered.length}} {{searchedIngredient}}</h3>
+				<a href="#/test">Test</a>
+				<a href='#/recipes'>Recipes</a>
+				<div ng-view>
+
+				</div>
 	    </div>
 
 	  </form>
 
-	  <div class="recipe-container">
-	    <p class="error">{{error}}</p>
 
-	    <ul class="recipe-list">
-	      <li class="recipe" ng-repeat="recipe in filtered = (recipes | filter:textFilter | limitTo: numLimit)">
-	        <h4 class="recipe-title">{{recipe.title}}</h4>
-	        <img class="recipe-image" ng-src="{{recipe.image_url}}" />
-	        <p>Get Recipe!</p>
-	        <a class="recipe-link" href="{{recipe.source_url}}"></a>
-	      </li>
-	    </ul>
-	  </div>
-	</div>
 
 </body>
 </html>

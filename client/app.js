@@ -2,7 +2,7 @@ require('angular');
 
 var MainController = require('./controllers/MainController');
 var TestController = require('./controllers/TestController');
-
+var RecipesController = require('./controllers/RecipesController');
 var configOptions = [
 	'$routeProvider',
 	function($routeProvider) {
@@ -12,6 +12,10 @@ var configOptions = [
 	      templateUrl: './partials/test.html',
 	      controller: 'TestController'
 	    })
+			.when('/recipes', {
+				templateUrl: './partials/recipes.html',
+				// controller: 'RecipesController'
+			})
 
 	}
 ]
@@ -22,4 +26,5 @@ angular.module('app', [
 	])
 	.controller('MainController', ['$scope', '$http', MainController])
 	.controller('TestController', ['$scope', TestController])
+	.controller('RecipesController' ['$scope', RecipesController])
 	.config(configOptions)
