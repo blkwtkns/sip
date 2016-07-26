@@ -23,4 +23,4 @@ gulp.task('gulpmon', function () {
   })
 })
 
-gulp.task('default', ['gulpmon', 'watch'])
+gulp.task('default', ['gulpmon', 'browserify','sass', 'watch'])
