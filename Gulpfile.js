@@ -1,44 +1,40 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
-var browserify = require('browserify');
-var buffer = require('vinyl-buffer');
-var source = require('vinyl-source-stream');
-var browserSync = require('browser-sync');
+var gulp = require('gulp')
+var sass = require('gulp-ruby-sass')
+var connect = require('gulp-connect')
+var browserify = require('browserify')
+var source = require('vinyl-source-stream')
 
-// Static Server + watching scss/html files
-gulp.task('serve', ['sass'], function() {
+gulp.task('connect', function () {
+	connect.server({
+		root: 'public',
+		port: 3000
+	})
+})
 
-    browserSync.init({
-        server: "./public"
-    });
+gulp.task('browserify', function() {
+	// Grabs the app.js file
+    return browserify('./client/app.js')
+    	// bundles it and creates a file called main.js
+        .bundle()
+        .pipe(source('main.js'))
+        // saves it the public/js/ directory
+        .pipe(gulp.dest('./public/js/'));
+})
 
-    // Watches for changes in JS files - hotreload
-    gulp.watch("./client/*.js", ['browserify']);
-
-  	// Watches for changes in SCSS files - hotreload
-    gulp.watch("./scss/*.scss", ['sass']);
-
-    // Watches for changes in public/html files - hotreload
-    gulp.watch("./public/*.html").on('change', browserSync.reload);
-});
-
-// Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
-  return gulp.src("./scss/style.scss")
-    .pipe(sass())
-    .pipe(gulp.dest("./public"))
-    .pipe(browserSync.stream());
-});
+	return sass('sass/style.sass')
+		.pipe(gulp.dest('public/css'))
+})
 
-gulp.task('browserify', function () {
-  return browserify('./client/app.js')
-    .bundle()
-    .pipe(source('bundle.js'))
-    .pipe(buffer())
-    .pipe(uglify())
-    .pipe(gulp.dest('./public'))
-    .pipe(browserSync.stream());
-});
+gulp.task('reset', function() {
+	return
+})
 
-gulp.task('default', ['serve', 'browserify']);
+gulp.task('watch', function() {
+	gulp.watch('./client/**/*.js', ['browserify'])
+	gulp.watch('./sass/style.sass', ['sass'])
+	gulp.watch('./public/index.html', ['reset'])
+	////
+})
+
+gulp.task('default', ['connect', 'browserify', 'sass', 'watch'])
