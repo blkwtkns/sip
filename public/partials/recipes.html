@@ -1,6 +1,6 @@
 <div class="container" ng-controller="GulpAceController">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
       <div class="recipe-container">
         <h3 class="ingredients-title">{{header}}</h3>
         <ul class="recipe-display">
@@ -15,9 +15,9 @@
         <button ng-click="test()">Test</button>
       </div>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
       <h3 class="code-title">Gulpfile.js</h3>
-      <div ng-readonly="checked" ng-model="aceCode" ui-ace="{
+      <div class="ace-container" ng-readonly="checked" ng-model="aceCode" ui-ace="{
         useWrapMode : true,
         theme:'monokai',
         mode: 'javascript'
