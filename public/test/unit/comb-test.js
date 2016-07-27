@@ -15,6 +15,7 @@ describe('Testing AngularJS Test Suite', function(){
           timeout = $timeout
         }))
 
+    describe('Testing existence and default values of scope properties and methods', function() {
         it('should have scope property ingredients', function() {
           expect(scope.ingredient).toBeDefined();
           expect(scope.ingredient).toBe(null);
@@ -60,10 +61,23 @@ describe('Testing AngularJS Test Suite', function(){
           expect(scope.numLimit).toBeDefined();
           expect(scope.numLimit).toBe(null);
         });
+  })
 
+        it('should clear the input field', function() {
 
+          scope.ingredient = "random";
+          expect(scope.ingredient.length).toBe(6)
+          scope.clearSearch();
+          expect(scope.ingredient.length).toBe(0);
+        })
 
+        it('should clear the input field', function() {
 
+          scope.ingredient = "random";
+          expect(scope.ingredient.length).toBe(6)
+          scope.clearSearch();
+          expect(scope.ingredient.length).toBe(0);
+        })
 
 
   })
