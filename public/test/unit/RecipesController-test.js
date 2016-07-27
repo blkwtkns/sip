@@ -1,9 +1,7 @@
 describe('Testing AngularJS Test Suite', function(){
 
   beforeEach(module('app'))
-  it('should have tests', function (){
-    expect(true).toBe(true);
-  });
+
 
   describe('Testing AngularJS Controller RecipesController', function () {
   var scope, ctrl, httpBackend, timeout, rootScope;
@@ -87,7 +85,6 @@ describe('Testing AngularJS Test Suite', function(){
             "0":"bower.js",
             "1":"connect.js"
           }));
-
 
 				    expect(scope.singleRecipe[0]).toBe("var gulp = require('gulp')")
         });
