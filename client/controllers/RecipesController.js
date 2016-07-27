@@ -1,5 +1,5 @@
-module.exports = function($scope) {
-	$scope.test = 'Hello';
-	$scope.messages = ['1', '2', '3', '4', '5'];
-	$scope.select;
-}
+
+angular.module('Slurpee.RecipesController', ['ngRoute'])
+	.controller('RecipesController', ['$scope', function($scope) {
+		$scope.recipesTest = 'HEHEHEHEHSDFDDSFHEY'
+	}]);
