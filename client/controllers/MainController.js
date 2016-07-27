@@ -1,6 +1,6 @@
 angular.module('Slurpee.MainController', ['ngRoute'])
-	.controller('MainController', ['$scope', '$http',  'RecipeFactory', 'GulpAceFactory', 'WebpackAceFactory',
-	function($scope, $http, recipeFactory, gulpAceFactory, webpackAceFactory) {
+	.controller('MainController', ['$scope', '$http',  'GulpFactory', 'GulpAceFactory', 'WebpackAceFactory',
+	function($scope, $http, gulpFactory, gulpAceFactory, webpackAceFactory) {
 		$scope.ingredient = null;
 		// Ace editor model binding
 		$scope.aceChecked;
@@ -11,15 +11,15 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		$scope.textFilter = null;
 		$scope.numLimit = null;
 
-		$scope.recipesList = recipeFactory.recipesList;
+		$scope.recipesList = gulpFactory.recipesList;
 
 		$scope.searchRecipe = function() {
 			if ($scope.ingredients === '') return;
 			var isInList = false;
 			console.log($scope.ingredient);
-			console.log(recipeFactory.recipesList);
-			for (var i = 0; i < recipeFactory.recipesList.length; i++) {
-				if (recipeFactory.recipesList[i] === $scope.ingredient) {
+			console.log(gulpFactory.recipesList);
+			for (var i = 0; i < gulpFactory.recipesList.length; i++) {
+				if (gulpFactory.recipesList[i] === $scope.ingredient) {
 					isInList = true;
 					break;
 				}
@@ -29,7 +29,7 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 				return;
 			}
 			console.log($scope.ingredient);
-			recipeFactory.getRecipe($scope.ingredient);
+			gulpFactory.getRecipe($scope.ingredient);
 			$scope.clearSearch();
 
 		};
