@@ -13,31 +13,13 @@
 	<script src="/js/main.js"></script>
 </head>
 <body>
+	<ng-include src="partials/test2.html"></ng-include>
 	<div class="header">
-		<h2 class="title"><img class="sip-logo" src="./img/SipLogo_02.png" />A Thirsty Gulp Generator</h2>
+		<img class="sip-logo" src="./img/SipLogo_02.png" />
+		<h4 class="title">A Thirsty Gulp Generator</h4>
 	</div>
 
 	<div ng-controller="MainController as MainCtrl" class="container cf">
-
-		<div class="container" ng-controller="AceController">
-			<div class="row">
-				<div class="col-xs-6">
-					<div ng-readonly="checked" ng-model="aceCode" ui-ace="{
-					  useWrapMode : true,
-					  theme:'monokai',
-					  mode: 'javascript'
-					}">
-					</div>
-					<div>
-						<span>Check make file Readonly: <input type="checkbox" ng-model="checked" ></span>
-					</div>
-				</div>
-				<div class="col-xs-6">
-					<textarea></textarea>
-				</div>
-			</div>
-		</div>
-
 	  <form ng-submit="searchRecipe()">
 	    <div class="ingredient-actions">
 	      <input class="ingredient" type="text" placeholder="Slurp ingredients mmm..." name="ingredient" ng-model="ingredient">
@@ -46,28 +28,24 @@
 	    </div>
 		</form>
 
-	    <div class="filter-options" ng-hide="filterOptions">
-	      <label class="label">Filters: </label>
-	      <input class="text-filter" placeholder="Filter By Name" type="text" name="textFilter" ng-model="textFilter">
-	      <input class="clear-ingredients" ng-click="clearFilter()" type="button" value="Clear Filter" />
-	      <select class="num-filter" ng-model="numLimit">
-	        <option value="4">4</option>
-	        <option value="8">8</option>
-	        <option value="12">12</option>
-	        <option value="20">20</option>
-	      </select>
+    <div class="filter-options" ng-hide="filterOptions">
+      <label class="label">Filters: </label>
+      <input class="text-filter" placeholder="Filter By Name" type="text" name="textFilter" ng-model="textFilter">
+      <input class="clear-ingredients" ng-click="clearFilter()" type="button" value="Clear Filter" />
+      <select class="num-filter" ng-model="numLimit">
+        <option value="4">4</option>
+        <option value="8">8</option>
+        <option value="12">12</option>
+        <option value="20">20</option>
+      </select>
 
-	      <h3 class='searched-ingredient'>{{filtered.length}} {{searchedIngredient}}</h3>
-				<a href="#/test">Test</a>
-				<a href='#/recipes'>Recipes</a>
-				<div ng-view>
+      <h3 class='searched-ingredient'>{{filtered.length}} {{searchedIngredient}}</h3>
+			<a href="#/webpack-recipe">Webpack</a>
+			<a href='#/recipes'>Gulp</a>
+			<div ng-view>
 
-				</div>
-	    </div>
-
-
-
-
-
+			</div>
+    </div>
+  </div>
 </body>
 </html>
