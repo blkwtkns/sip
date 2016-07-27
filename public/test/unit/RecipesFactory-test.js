@@ -2,8 +2,8 @@ describe('Testing AngularJS Test Suite', function(){
 
   beforeEach(module('app'))
 
-  describe('Testing AngularJS Factory RecipeFactory', function () {
-  var scope, httpBackend, timeout, rootScope, RecipeFactory;
+  describe('Testing AngularJS Factory GulpFactory', function () {
+  var scope, httpBackend, timeout, rootScope, GulpFactory;
 
 
     beforeEach(inject(function($rootScope, $httpBackend, $timeout, $injector) {
@@ -11,17 +11,17 @@ describe('Testing AngularJS Test Suite', function(){
             scope = $rootScope.$new();
             httpBackend = $httpBackend;
             timeout = $timeout;
-            RecipeFactory = $injector.get('RecipeFactory');
+            GulpFactory = $injector.get('GulpFactory');
           }))
 
 
     describe('Testing the existence of properties and methods', function () {
 
       it('should return an object that has these properties defined', function () {
-        expect(RecipeFactory.imgMinRecipe).toBeDefined();
-        expect(RecipeFactory.recipesList).toBeDefined();
-        expect(RecipeFactory.getRecipesList).toBeDefined();
-        expect(RecipeFactory.getRecipe).toBeDefined();
+        expect(GulpFactory.imgMinRecipe).toBeDefined();
+        expect(GulpFactory.recipesList).toBeDefined();
+        expect(GulpFactory.getRecipesList).toBeDefined();
+        expect(GulpFactory.getRecipe).toBeDefined();
       })
     })
 
@@ -33,7 +33,7 @@ describe('Testing AngularJS Test Suite', function(){
         "1":"connect.js"
       })
       var returnFromFunc;
-      RecipeFactory.getRecipesList().then(function(data){returnFromFunc = data.data});
+      GulpFactory.getRecipesList().then(function(data){returnFromFunc = data.data});
       timeout.flush()
       httpBackend.flush();
 

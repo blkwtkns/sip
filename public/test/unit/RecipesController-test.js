@@ -3,7 +3,7 @@ describe('Testing AngularJS Test Suite', function(){
   beforeEach(module('app'))
 
 
-  describe('Testing AngularJS Controller RecipesController', function () {
+  describe('Testing AngularJS Controller GulpController', function () {
   var scope, ctrl, httpBackend, timeout, rootScope;
 
 	beforeEach(function () {
@@ -21,7 +21,7 @@ describe('Testing AngularJS Test Suite', function(){
 
 			var recipesList = [];
 
-			var MockedRecipeFactory = {
+			var MockedGulpFactory = {
 
         imgMinRecipe: strVar,
         recipesList: [],
@@ -46,13 +46,13 @@ describe('Testing AngularJS Test Suite', function(){
 
 			};
 
-			$provide.value('RecipeFactory', MockedRecipeFactory)
+			$provide.value('GulpFactory', MockedGulpFactory)
 		});
 	});
 
    })
 
-	  beforeEach(inject(function($controller, $rootScope, $httpBackend, $timeout, RecipeFactory) {
+	  beforeEach(inject(function($controller, $rootScope, $httpBackend, $timeout, GulpFactory) {
             httpBackend = $httpBackend;
             httpBackend.expectGET('/gulp-tasks').respond({
               "0":"bower.js",
@@ -60,16 +60,16 @@ describe('Testing AngularJS Test Suite', function(){
             })
 	          rootScope = $rootScope;
 	          scope = $rootScope.$new();
-	          ctrl = $controller('RecipesController', {$scope:scope});
+	          ctrl = $controller('GulpController', {$scope:scope});
 	          timeout = $timeout
             httpBackend.flush()
 
 	        }))
 
-    describe('Testing existence and default values of scope properties and methods on RecipesController', function() {
+    describe('Testing existence and default values of scope properties and methods on GulpController', function() {
         it('should have scope property header', function() {
           expect(scope.header).toBeDefined();
-          expect(scope.header).toBe('List of Recipes');
+          expect(scope.header).toBe('Sip Ingredients');
         });
 
         it('should have scope property singleRecipe', function() {

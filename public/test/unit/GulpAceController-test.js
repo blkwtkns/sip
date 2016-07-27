@@ -6,7 +6,7 @@ describe('Testing AngularJS Test Suite', function(){
   var scope, ctrl, httpBackend, timeout, rootScope;
 
 
-	  beforeEach(inject(function($controller, $rootScope, $httpBackend, $timeout, RecipeFactory) {
+	  beforeEach(inject(function($controller, $rootScope, $httpBackend, $timeout, GulpFactory) {
             httpBackend = $httpBackend;
 	          rootScope = $rootScope;
 	          scope = $rootScope.$new();

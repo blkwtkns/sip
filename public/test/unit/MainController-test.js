@@ -23,7 +23,7 @@ describe('Testing AngularJS Test Suite', function(){
 
 			var recipesList = [];
 
-			var MockedRecipeFactory = {
+			var MockedGulpFactory = {
 
         imgMinRecipe: strVar,
         recipesList: [],
@@ -49,13 +49,13 @@ describe('Testing AngularJS Test Suite', function(){
 
 			};
 
-			$provide.value('RecipeFactory', MockedRecipeFactory)
+			$provide.value('GulpFactory', MockedGulpFactory)
 		});
 	});
 
    })
 
-    beforeEach(inject(function($controller, $rootScope, $httpBackend, $timeout, RecipeFactory) {
+    beforeEach(inject(function($controller, $rootScope, $httpBackend, $timeout, GulpFactory) {
             httpBackend = $httpBackend;
             rootScope = $rootScope;
             scope = $rootScope.$new();
