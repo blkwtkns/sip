@@ -67,7 +67,7 @@ app.route('/gulp-tasks')
     .post(function(req, res, next) {
       console.log(req.body);
       var name = req.body.ingredient;
-      var readStream = fs.createReadStream(path.join('./client/gulp-tasks/' + name + '.js'));
+      var readStream = fs.createReadStream(path.join('./client/webpack-tasks/' + name + '.js'));
       var data = '';
       readStream.setEncoding('utf-8');
       readStream.on('data', function(chunk) {

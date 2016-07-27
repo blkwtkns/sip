@@ -12,7 +12,11 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		$scope.textFilter = null;
 		$scope.numLimit = null;
 
-		$scope.searchGulp = function() {
+		$scope.searchGulp = function(gulpIngredient) {
+			if (gulpIngredient) {
+				gulpFactory.getRecipe(gulpIngredient);
+				return;
+			}
 			if ($scope.gulpIngredient === '') return;
 			var isInList = false;
 			console.log($scope.gulpIngredient);
@@ -33,7 +37,11 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 
 		};
 
-		$scope.searchWebpack = function() {
+		$scope.searchWebpack = function(webpackIngredient) {
+			if (webpackIngredient) {
+				webpackFactory.getRecipe(webpackIngredient);
+				return;
+			}
 			if ($scope.webpackIngrendient === '') return;
 			var isInList = false;
 			console.log($scope.webpackIngrendient);
@@ -50,13 +58,17 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 			}
 			console.log($scope.webpackIngrendient);
 			webpackFactory.getRecipe($scope.webpackIngrendient);
-			$scope.clearSearch();
+			$scope.clearSearch2();
 
 		};
 
 		$scope.clearSearch = function() {
-			$scope.ingredient = "";
+			$scope.gulpIngredient = '';
 		};
+
+		$scope.clearSearch2 = function() {
+			$scope.webpackIngrendient = '';
+		}
 
 		$scope.clearFilter = function() {
 			$scope.textFilter = "";
