@@ -1,8 +1,6 @@
 angular.module('Slurpee.MainController', ['ngRoute'])
-	.controller('MainController', ['$scope', '$http', function($scope, $http) {
+	.controller('MainController', ['$scope', '$http',  'RecipeFactory', function($scope, $http, recipeFactory) {
 		$scope.ingredient = null;
-		$scope.error = null;
-		$scope.recipes = null;
 
 
 		//Filter options
@@ -10,8 +8,25 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		$scope.textFilter = null;
 		$scope.numLimit = null;
 
-		$scope.searchRecipe = function() {
+		$scope.recipesList = recipeFactory.recipesList;
 
+		$scope.searchRecipe = function() {
+			if ($scope.ingredients === '') return;
+			var isInList = false;
+			console.log($scope.recipesList);
+			for (var i = 0; i < $scope.recipesList.length; i++) {
+				if ($scope.recipesList[i] === data) {
+					isInList = true;
+					break;
+				}
+			}
+			if (isInList === false) {
+				console.log('ingredients not in list');
+				return;
+			}
+
+			console.log($scope.ingredient);
+			recipeFactory.getRecipe($scope.ingredient);
 		};
 
 		$scope.clearSearch = function() {

@@ -4,32 +4,37 @@ const app = express();
 const http = require('http');
 const fs = require('fs');
 const append = require('./readAppend'); //appends a file to another: @params -> (file, appendFile)
+const bodyParser = require('body-parser');
 const path = require('path');
 
 app.use(express.static(path.join(__dirname + './../public')));
+app.use(bodyParser.json());
 
-var server = app.listen(3000);
-console.log('now listenin`');
 
-app.get('/gulp-tasks', function(req, res) {
-  console.log('gulp-tasks');
-  res.json({
-    test: 'test1',
-    test2: 'test2'
+
+app.route('/gulp-tasks')
+  .get(function(req, res, next) {
+  console.log('/gulp-tasks');
+
+    fs.readdir('./gulp-tasks', function(err, files) {
+      if (err) {
+        console.log(err);
+        res.send('');
+      } else {
+        files = files.map(function(element) {
+          return element.replace(/\.[^/.]+$/, "");
+        });
+        console.log('files array');
+        console.log(files);
+        res.json(files);
+      }
+    });
+  })
+  .post(function(req, res, next) {
+    console.log(req.body);
+
+
   });
-});
 
-app.get('/gulp-tasks-list', function(req, res) {
-  console.log('/gulp-tasks-list');
-
-  fs.readdir('./gulp-tasks', function(err, files) {
-    if (err) {
-      console.log(err);
-      res.send('');
-    } else {
-      console.log('files array');
-      console.log(files);
-      res.json(files);
-    }
-  });
-});
+  var server = app.listen(3000);
+  console.log('now listenin`');

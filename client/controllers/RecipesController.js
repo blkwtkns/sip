@@ -3,20 +3,21 @@ angular.module('Slurpee.RecipesController', ['ngRoute'])
 	.controller('RecipesController', ['$scope', 'RecipeFactory',
 		function($scope, recipeFactory) {
 			$scope.header = 'List of Recipes';
-			$scope.recipeSearch = '';
-			$scope.recipesTest = recipeFactory.imgMinRecipe;
+
+			$scope.singleRecipe = recipeFactory.imgMinRecipe;
+
 			$scope.recipesList = null;
-			$scope.test = null;
-
-			recipeFactory.getTest().then(function(res) {
-				$scope.test = JSON.stringify(res.data);
-			});
-
+			$scope.recipe = null;
 			recipeFactory.getRecipesList().then(function(res) {
 				$scope.recipesList = res.data;
+				recipeFactory.saveRecipesList(res.data);
 			});
 
-			$scope.findRecipe = function() {
-				console.log($scope.recipesList);
+			recipeFactory.getRecipe().then(function(res) {
+				$scope.recipe = res.data;
+			});
+
+			$scope.test = function() {
+				recipeFactory.test();
 			};
 		}]);
