@@ -4,7 +4,7 @@
 			<div class="recipe-container">
 					<h3 class="ingredients-title">{{header}}</h3>
 					<ul class="recipe-list">
-							<li class="recipe" ng-repeat="recipe in recipesList" ng-click="searchWebpack(recipe)">
+							<li class="recipe" ng-repeat="recipe in recipesList | filter:webpackIngredient" ng-click="searchWebpack(recipe)">
 									<h4 class="recipe-title">{{recipe}}</h4>
 							</li>
 					</ul>
