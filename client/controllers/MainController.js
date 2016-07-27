@@ -13,9 +13,10 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		$scope.searchRecipe = function() {
 			if ($scope.ingredients === '') return;
 			var isInList = false;
-			console.log($scope.recipesList);
-			for (var i = 0; i < $scope.recipesList.length; i++) {
-				if ($scope.recipesList[i] === data) {
+			console.log($scope.ingredient);
+			console.log(recipeFactory.recipesList);
+			for (var i = 0; i < recipeFactory.recipesList.length; i++) {
+				if (recipeFactory.recipesList[i] === $scope.ingredient) {
 					isInList = true;
 					break;
 				}

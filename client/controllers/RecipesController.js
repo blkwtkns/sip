@@ -10,7 +10,8 @@ angular.module('Slurpee.RecipesController', ['ngRoute'])
 			$scope.recipe = null;
 			recipeFactory.getRecipesList().then(function(res) {
 				$scope.recipesList = res.data;
-				recipeFactory.saveRecipesList(res.data);
+				// on success write list into the factory
+				recipeFactory.recipesList = res.data;
 			});
 
 			recipeFactory.getRecipe().then(function(res) {
