@@ -11,6 +11,17 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		$scope.filterOptions = false;
 		$scope.textFilter = null;
 		$scope.numLimit = null;
+		// initial population of gulp and webpack recipe lists
+		gulpFactory.getRecipesList().then(function(res) {
+			console.log('initial populate of gulp list');
+			// on success write list into the factory
+			gulpFactory.recipesList = res.data;
+		});
+		webpackFactory.getRecipesList().then(function(res) {
+			console.log('initial populate of webpack list');
+			// on success write list into the factory
+			webpackFactory.recipesList = res.data;
+		});
 
 		$scope.searchGulp = function(gulpIngredient) {
 			if (gulpIngredient) {
