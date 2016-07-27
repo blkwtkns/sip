@@ -1,11 +1,10 @@
 angular.module('Slurpee.MainController', ['ngRoute'])
 	.controller('MainController', ['$scope', '$http',  'GulpFactory', 'WebpackFactory', 'GulpAceFactory', 'WebpackAceFactory', '$location',
 	function($scope, $http, gulpFactory, webpackFactory, gulpAceFactory, webpackAceFactory, $location) {
-		$scope.gulpIngredient = null;
-		$scope.webpackIngrendient = null;
+		$scope.gulpIngredient;
+		$scope.webpackIngrendient;
 		// Ace editor model binding
 		$scope.aceChecked;
-
 
 		//Filter options
 		$scope.filterOptions = false;

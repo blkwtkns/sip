@@ -4,9 +4,6 @@ body {
   color: #46bdd1;
   font-family: "Open Sans", Helvetica, Arial, sans-serif; }
 
-.ace_editor {
-  height: 200px; }
-
 h1, h2, h3, h4, h5, p, ul, li {
   margin: 0;
   padding: 0; }
@@ -65,8 +62,20 @@ ul {
 .ingredient-actions {
   margin-bottom: 10px; }
 
-.filter-options {
+.config-options {
+  margin: 30px 0;
   text-align: center; }
+  .config-options a {
+    border: 1px solid #46bdd1;
+    border-radius: 4px;
+    background: #46bdd1;
+    color: #fff;
+    padding: 6px 12px;
+    transition: 0.3s all ease-in-out;
+    text-decoration: none; }
+    .config-options a:hover {
+      background: #fff;
+      color: #46bdd1; }
 
 .label {
   font-size: 18px;
@@ -75,7 +84,7 @@ ul {
 .submit-ingredients,
 .clear-ingredients {
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #46bdd1;
   border-radius: 4px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -97,7 +106,7 @@ ul {
 
 .submit-ingredients:hover,
 .clear-ingredients:hover {
-  background: #ccc;
+  background: #46bdd1;
   color: #fff;
   cursor: pointer; }
 
@@ -123,6 +132,7 @@ ul {
 .recipe {
   border: 1px solid #46bdd1;
   border-radius: 3px;
+  cursor: pointer;
   float: left;
   margin-bottom: 30px;
   margin-right: 2%;
@@ -140,10 +150,6 @@ ul {
   -webkit-box-shadow: 0 5px 3px 3px #ccc;
   box-shadow: 0 5px 3px 3px #ccc; }
 
-.recipe p {
-  color: blue;
-  padding: 8px 0 4px; }
-
 .recipe.ng-enter {
   -webkit-transition: 0.5s ease-in-out all;
   transition: 0.5s ease-in-out all;
@@ -154,17 +160,6 @@ ul {
 
 .recipe:nth-child(4n) {
   margin-right: 0; }
-
-.recipe-image {
-  height: 200px;
-  width: 100%; }
-
-.recipe-link {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%; }
 
 .recipe-display {
   text-align: left; }

@@ -7,6 +7,8 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="/css/style.css">
+
+	<!-- Javascript files -->
 	<script type="text/javascript" src="./bower_components/ace-builds/src-min-noconflict/ace.js"></script>
 	<script type="text/javascript" src="./bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="./bower_components/angular-ui-ace/ui-ace.js"></script>
@@ -62,44 +64,25 @@
 	<div ng-controller="MainController as MainCtrl" class="container cf">
 	  <form ng-submit="searchGulp()">
 	    <div class="ingredient-actions">
-	      <input class="ingredient" type="text" placeholder="Slurp ingredients mmm..." name="ingredient" ng-model="gulpIngredient">
-	      <input class="submit-ingredients" type="submit" value="Search Gulp Recipes"/>
+	      <input class="ingredient" type="text" placeholder="Sip on Gulp" name="ingredient" ng-model="gulpIngredient">
 	      <!-- <input class="clear-ingredients" ng-click="clearSearch()" type="button" value="Clear Ingredients" /> -->
 	    </div>
 		</form>
 		<form ng-submit="searchWebpack()">
 			<div class="ingredient-actions">
-				<input class="ingredient" type="text" placeholder="Slurp ingredients mmm..." name="ingredient" ng-model="webpackIngrendient">
-				<input class="submit-ingredients" type="submit" value="Search Webpack Recipes"/>
+				<input class="ingredient" type="text" placeholder="Sip on Webpack" name="ingredient" ng-model="webpackIngrendient">
 				<!-- <input class="clear-ingredients" ng-click="clearSearch()" type="button" value="Clear Ingredients" /> -->
 			</div>
 		</form>
 
-    <div class="filter-options" ng-hide="filterOptions">
-      <label class="label">Filters: </label>
-      <input class="text-filter" placeholder="Filter By Name" type="text" name="textFilter" ng-model="textFilter">
-      <input class="clear-ingredients" ng-click="clearFilter()" type="button" value="Clear Filter" />
-      <select class="num-filter" ng-model="numLimit">
-        <option value="4">4</option>
-        <option value="8">8</option>
-        <option value="12">12</option>
-        <option value="20">20</option>
-      </select>
-
-      <h3 class='searched-ingredient'>{{filtered.length}} {{searchedIngredient}}</h3>
+		<div class="config-options">
+	    <!-- <h3 class='searched-ingredient'>{{filtered.length}} {{searchedIngredient}}</h3> -->
 			<a href="#/webpack-recipe">Webpack</a>
 			<a href='#/recipes'>Gulp</a>
-
-      <button class='config-download btn btn-default' ng-click="download()" value="Download Config" download>Build</button>
-      <a href="./scaffold.tar.gz" class="btn btn-default" role="button" download><span class="glyphicon glyphicon-cloud-download"></span>  Download</a>
-
-
-			<div ng-view>
-
-
-
-			</div>
     </div>
+		<div ng-view>
+
+		</div>
   </div>
 </body>
 </html>
