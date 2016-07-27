@@ -18,20 +18,27 @@
 		<h2 class="title">Slurpees: A gulp tasks generator</h2>
 	</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-6">
-				<div ui-ace></div>
-			</div>
-			<div class="col-xs-6">
-				<textarea></textarea>
-			</div>
-			
-		</div>
-		
-	</div>
-
 	<div ng-controller="MainController as MainCtrl" class="container cf">
+
+		<div class="container" ng-controller="AceController">
+			<div class="row">
+				<div class="col-xs-6">
+					<div ng-readonly="checked" ng-model="aceCode" ui-ace="{
+					  useWrapMode : true,
+					  theme:'monokai',
+					  mode: 'javascript'
+					}">
+					</div>
+					<div>
+						<span>Check make file Readonly: <input type="checkbox" ng-model="checked" ></span>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<textarea></textarea>
+				</div>
+			</div>
+		</div>
+
 	  <form ng-submit="searchRecipe()">
 	    <div class="ingredient-actions">
 	      <input class="ingredient" type="text" placeholder="Slurp ingredients mmm..." name="ingredient" ng-model="ingredient">

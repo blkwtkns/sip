@@ -1,3 +1,4 @@
+require('./controllers/AceController');
 require('./controllers/MainController');
 require('./controllers/TestController');
 require('./controllers/RecipesController');
@@ -10,6 +11,7 @@ angular.module('app', [
 	'Slurpee.TestController',
 	'Slurpee.RecipesController',
 	'Slurpee.RecipeFactory',
+	'Slurpee.AceController',
 	'ui.ace'
 	])
 	.config(['$routeProvider', configFunction]);

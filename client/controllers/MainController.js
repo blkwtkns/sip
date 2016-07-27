@@ -2,6 +2,9 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 	.controller('MainController', ['$scope', '$http',  'RecipeFactory', function($scope, $http, recipeFactory) {
 		$scope.ingredient = null;
 
+		// Ace editor model binding
+		$scope.aceChecked;
+
 
 		//Filter options
 		$scope.filterOptions = false;
