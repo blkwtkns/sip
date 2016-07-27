@@ -5,4 +5,4 @@ npm-debug.log
 /public/js/main.js
 /public/css/style.css
 /server/releaseDir/gulpfile.js
-/components/bower
+/public/components/bower
