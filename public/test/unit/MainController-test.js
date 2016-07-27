@@ -8,20 +8,58 @@ describe('Testing AngularJS Test Suite', function(){
   describe('Testing AngularJS Controller MainController', function () {
   var scope, ctrl, httpBackend, timeout, rootScope;
 
-  // beforeEach(function () {
-  //   module(function ($provide) {
-  //     var MockedRecipesList = {
-  //
-  //     }
-  //   });
+  beforeEach(function () {
+		module(function ($provide) {
+
+			var strVar = "";
+			strVar += "var gulp = require('gulp');";
+			strVar += "var imageMin = require('gulp-imagemin');";
+			strVar += "gulp.task('imageMin', function() {";
+			strVar += "gulp.src('.\/assets\/img\/*')";
+			strVar += "pipe(imageMin())";
+			strVar += ".pipe(gulp.dest('.\/public\/img'));";
+			strVar += "});";
+			strVar = strVar.split(';');
+
+			var recipesList = [];
+
+			var MockedRecipeFactory = {
+
+        imgMinRecipe: strVar,
+        recipesList: [],
+        getRecipesList: function() {
+          return $http.get('/gulp-tasks');
+        },
+        saveRecipesList: function(recipesList) {
+          recipesList = recipesList;
+        },
+        getRecipe: function(ingredient) {
+          const data = {
+            ingredient: ingredient
+          };
+          $rootScope.$broadcast('getRecipe called');
+          return $http.post('/gulp-tasks', data)
+            .then(function(res) {
+              console.log(res.data);
+            });
+        },
+        test: function() {
+          console.log(this.recipesList);
+        }
+
+			};
+
+			$provide.value('RecipeFactory', MockedRecipeFactory)
+		});
+	});
 
    })
 
     beforeEach(inject(function($controller, $rootScope, $httpBackend, $timeout, RecipeFactory) {
+            httpBackend = $httpBackend;
             rootScope = $rootScope;
             scope = $rootScope.$new();
             ctrl = $controller('MainController', {$scope:scope});
-            httpBackend = $httpBackend;
             timeout = $timeout
           }))
 
@@ -48,7 +86,7 @@ describe('Testing AngularJS Test Suite', function(){
 
         it('should have scope property recipesList', function() {
           expect(scope.recipesList).toBeDefined();
-          expect(scope.recipesList.length).toBeGreaterThan(0);
+          expect(JSON.stringify(scope.recipesList)).toBe(JSON.stringify([]));
         });
 
         it('should have scope function searchRecipe', function() {
@@ -57,7 +95,7 @@ describe('Testing AngularJS Test Suite', function(){
           expect(typeof scope.searchRecipe).toBe('function');
         });
 
-        it('should clear the input field', function() {
+        it('should clear the ingredient field', function() {
 
           scope.ingredient = "random";
           expect(scope.ingredient.length).toBe(6)
@@ -73,6 +111,16 @@ describe('Testing AngularJS Test Suite', function(){
           expect(scope.textFilter.length).toBe(0);
         })
 
-
   })
+
+    describe('Testing searchRecipe ', function () {
+      //bad test, please update this and add a $broadcast
+      //when the underlying function is called
+      it('should call the function getRecipe', function () {
+        spyOn(scope, 'searchRecipe')
+        scope.searchRecipe()
+        expect(scope.searchRecipe).toHaveBeenCalled();
+      })
+    })
+
 })

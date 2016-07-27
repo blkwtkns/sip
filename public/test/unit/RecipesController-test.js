@@ -25,30 +25,26 @@ describe('Testing AngularJS Test Suite', function(){
 
 			var MockedRecipeFactory = {
 
-
-
-						imgMinRecipe: strVar,
-						recipesList: recipesList,
-						getRecipesList: function() {
-							return httpBackend.expectGET('/gulp-tasks');
-						},
-						saveRecipesList: function(recipesList) {
-							recipesList = recipesList;
-						},
-						getRecipe: function(ingredient) {
-							const data = {
-								ingredient: ingredient
-							};
-							return httpBackend.expectPOST('/gulp-tasks', data);
-						},
-						test: function() {
-							console.log(recipesList);
-						}
-
-
-
-
-
+        imgMinRecipe: strVar,
+        recipesList: [],
+        getRecipesList: function() {
+          return $http.get('/gulp-tasks');
+        },
+        saveRecipesList: function(recipesList) {
+          recipesList = recipesList;
+        },
+        getRecipe: function(ingredient) {
+          const data = {
+            ingredient: ingredient
+          };
+          return $http.post('/gulp-tasks', data)
+            .then(function(res) {
+              console.log(res.data);
+            });
+        },
+        test: function() {
+          console.log(this.recipesList);
+        }
 
 			};
 
@@ -59,11 +55,17 @@ describe('Testing AngularJS Test Suite', function(){
    })
 
 	  beforeEach(inject(function($controller, $rootScope, $httpBackend, $timeout, RecipeFactory) {
+            httpBackend = $httpBackend;
+            httpBackend.expectGET('/gulp-tasks').respond({
+              "0":"bower.js",
+              "1":"connect.js"
+            })
 	          rootScope = $rootScope;
 	          scope = $rootScope.$new();
 	          ctrl = $controller('RecipesController', {$scope:scope});
-	          httpBackend = $httpBackend;
 	          timeout = $timeout
+            httpBackend.flush()
+
 	        }))
 
     describe('Testing existence and default values of scope properties and methods on RecipesController', function() {
@@ -74,17 +76,20 @@ describe('Testing AngularJS Test Suite', function(){
 
         it('should have scope property singleRecipe', function() {
           expect(scope.singleRecipe).toBeDefined();
-					httpBackend.flush();
+					// httpBackend.flush();
           expect(scope.singleRecipe[0]).toBe("var gulp = require('gulp')");
         });
 			})
 
 		describe('Testing recipesList and recipes',function(){
         it('should populate respective scope properties', function() {
-					expect(scope.recipesList).toBe(null);
+					expect(JSON.stringify(scope.recipesList)).toBe(JSON.stringify({
+            "0":"bower.js",
+            "1":"connect.js"
+          }));
 
-					httpBackend.flush();
-					expect(scope.recipesList).toBeGreaterThan(0)
+
+				    expect(scope.singleRecipe[0]).toBe("var gulp = require('gulp')")
         });
 
 
