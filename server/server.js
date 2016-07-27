@@ -46,43 +46,44 @@ app.route('/gulp-tasks')
             writeStream.close();
             res.send(data);
         });
+
     });
 
 //webpack functionality, logic needs work, currently cut and paste from way above
-// app.route('/webpack-tasks')
-// .get(function(req, res, next) {
-// console.log('/webpack-tasks');
-// gets all the files names in client/gulp-tasks and trims out the .js ending
-// fs.readdir('./client/webpack-tasks', function(err, files) {
-// if (err) {
-// console.log(err);
-// res.send('');
-// } else {
-// files = files.map(function(element) {
-// return element.replace(/\.[^/.]+$/, "");
-// });
-// console.log('files array');
-// console.log(files);
-// res.json(files);
-// }
-// });
-// })
-// .post(function(req, res, next) {
-// console.log(req.body);
-// var name = req.body.ingredient;
-// var readStream = fs.createReadStream(path.join('./client/gulp-tasks/' + name + '.js'));
-// var data = '';
-// readStream.setEncoding('utf-8');
-// readStream.on('data', function(chunk) {
-// data += chunk;
-// });
+app.route('/webpack-tasks')
+    .get(function(req, res, next) {
+        console.log('/webpack-tasks');
+        // gets all the files names in client/gulp-tasks and trims out the .js ending
+        fs.readdir('./client/webpack-tasks', function(err, files) {
+            if (err) {
+                console.log(err);
+                res.send('');
+            } else {
+                files = files.map(function(element) {
+                    return element.replace(/\.[^/.]+$/, "");
+                });
+                console.log('files array');
+                console.log(files);
+                res.json(files);
+            }
+        });
+    })
+    .post(function(req, res, next) {
+        console.log(req.body);
+        var name = req.body.ingredient;
+        var readStream = fs.createReadStream(path.join('./client/webpack-tasks/' + name + '.js'));
+        var data = '';
+        readStream.setEncoding('utf-8');
+        readStream.on('data', function(chunk) {
+            data += chunk;
+        });
 
-// readStream.on('end', function() {
-// console.log('ended');
-// console.log(data);
-// res.send(data);
-// });
-// });
+        readStream.on('end', function() {
+            console.log('ended');
+            console.log(data);
+            res.send(data);
+        });
+    });
 
 
 //end point at `/compress`
