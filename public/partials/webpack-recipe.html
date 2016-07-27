@@ -1,8 +1,16 @@
 <div class="container" ng-controller="WebpackAceController">
 	<div class="row">
 		<div class="col-xs-6">
-			<h3 class="ingredients-title">List of ingredients for webpack goes here</h3>
-		</div>
+			<div class="recipe-container">
+					<h3 class="ingredients-title">{{header}}</h3>
+					<ul class="recipe-list">
+							<li class="recipe" ng-repeat="recipe in recipesList">
+									<h4 class="recipe-title">{{recipe}}</h4>
+							</li>
+					</ul>
+					<button ng-click="test()">Test</button>
+			</div>
+			</div>
 		<div class="col-xs-6">
 			<h3 class="code-title">Webpack.config.js</h3>
 			<div ng-readonly="checked" ng-model="webpackAceCode" ui-ace="{
