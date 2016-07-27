@@ -65,15 +65,13 @@
 	<div ng-controller="MainController as MainCtrl" class="container cf">
 	  <form ng-submit="searchGulp()">
 	    <div class="ingredient-actions">
-	      <input class="ingredient" type="text" placeholder="Sip ingredients" name="ingredient" ng-model="gulpIngredient">
-	      <input class="submit-ingredients" type="submit" value="Search Gulp Recipes"/>
+	      <input class="ingredient" type="text" placeholder="Sip on Gulp" name="ingredient" ng-model="gulpIngredient">
 	      <!-- <input class="clear-ingredients" ng-click="clearSearch()" type="button" value="Clear Ingredients" /> -->
 	    </div>
 		</form>
 		<form ng-submit="searchWebpack()">
 			<div class="ingredient-actions">
-				<input class="ingredient" type="text" placeholder="Sip ingredients" name="ingredient" ng-model="webpackIngrendient">
-				<input class="submit-ingredients" type="submit" value="Search Webpack Recipes"/>
+				<input class="ingredient" type="text" placeholder="Sip on Webpack" name="ingredient" ng-model="webpackIngrendient">
 				<!-- <input class="clear-ingredients" ng-click="clearSearch()" type="button" value="Clear Ingredients" /> -->
 			</div>
 		</form>
@@ -82,10 +80,11 @@
 	    <!-- <h3 class='searched-ingredient'>{{filtered.length}} {{searchedIngredient}}</h3> -->
 			<a href="#/webpack-recipe">Webpack</a>
 			<a href='#/recipes'>Gulp</a>
-		</div>
-		
+    </div>
+
 		<div ng-view>
 
+    
 		</div>
   </div>
 </body>
