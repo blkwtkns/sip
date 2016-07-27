@@ -1,27 +1,27 @@
 <div class="container" ng-controller="GulpAceController">
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="recipe-container">
-                <h3 class="ingredients-title">{{header}}</h3>
-                <ul class="recipe-list">
-                    <li class="recipe" ng-repeat="recipe in recipesList" ng-click="searchGulp(recipe)">
-                        <h4 class="recipe-title" >{{recipe}}</h4>
-                    </li>
-                </ul>
-                <button ng-click="test()">Test</button>
-            </div>
-        </div>
-        <div class="col-xs-6">
-            <h3 class="code-title">Gulpfile.js</h3>
-            <div ng-readonly="checked" ng-model="aceCode" ui-ace="{
-                useWrapMode : true,
-                theme:'monokai',
-                mode: 'javascript'
-              }">
-            </div>
-            <div>
-                <span>Check make file Readonly: <input type="checkbox" ng-model="checked" ></span>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div class="recipe-container">
+        <h3 class="ingredients-title">{{header}}</h3>
+        <ul class="recipe-list">
+          <li class="recipe" ng-repeat="recipe in recipesList" ng-click="searchGulp(recipe)">
+            <h4 class="recipe-title" >{{recipe}}</h4>
+          </li>
+        </ul>
+        <button ng-click="test()">Test</button>
+      </div>
     </div>
+    <div class="col-xs-12 col-sm-6">
+      <h3 class="code-title">Gulpfile.js</h3>
+      <div class="ace-container" ng-readonly="checked" ng-model="aceCode" ui-ace="{
+          useWrapMode : true,
+          theme:'monokai',
+          mode: 'javascript'
+        }">
+      </div>
+      <div>
+        <span>Check make file Readonly: <input type="checkbox" ng-model="checked" ></span>
+      </div>
+    </div>
+  </div>
 </div>
