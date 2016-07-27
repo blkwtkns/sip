@@ -89,7 +89,14 @@
       <h3 class='searched-ingredient'>{{filtered.length}} {{searchedIngredient}}</h3>
 			<a href="#/webpack-recipe">Webpack</a>
 			<a href='#/recipes'>Gulp</a>
+
+      <button class='config-download btn btn-default' ng-click="download()" value="Download Config" download>Build</button>
+      <a href="./scaffold.tar.gz" class="btn btn-default" role="button" download><span class="glyphicon glyphicon-cloud-download"></span>  Download</a>
+
+
 			<div ng-view>
+
+      
 
 			</div>
     </div>
