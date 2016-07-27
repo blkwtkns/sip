@@ -1,7 +1,6 @@
-angular
-	.module('Slurpee.GulpController', ['ngRoute'])
+angular.module('Slurpee.GulpController', ['ngRoute'])
 	.controller('GulpController', ['$scope', 'GulpFactory', function($scope, gulpFactory) {
-		$scope.header = 'Sip Ingredients';
+		$scope.header = 'Gulp Sip Recipes';
 
 		$scope.singleRecipe = gulpFactory.imgMinRecipe;
 
