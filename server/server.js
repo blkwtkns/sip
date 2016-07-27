@@ -11,13 +11,11 @@ const CombinedStream = require('combined-stream2');
 app.use(express.static(path.join(__dirname + './../public')));
 app.use(bodyParser.json());
 
-
-
 app.route('/gulp-tasks')
   .get(function(req, res, next) {
   console.log('/gulp-tasks');
-
-    fs.readdir('./gulp-tasks', function(err, files) {
+    // gets all the files names in client/gulp-tasks and trims out the .js ending
+    fs.readdir('./client/gulp-tasks', function(err, files) {
       if (err) {
         console.log(err);
         res.send('');
@@ -33,9 +31,20 @@ app.route('/gulp-tasks')
   })
   .post(function(req, res, next) {
     console.log(req.body);
+    var name = req.body.ingredient;
+    var readStream = fs.createReadStream(path.join('./client/gulp-tasks/' + name + '.js'));
+    var data = '';
+    readStream.setEncoding('utf-8');
+    readStream.on('data', function(chunk) {
+      data += chunk;
+    });
+
+    readStream.on('end', function() {
+      console.log('ended');
+      console.log(data);
+      res.send(data);
+    });
   });
-
-
 
 
 //store of gulp fragments
@@ -57,11 +66,9 @@ app.get('/compress', function(req, res) {
             console.log('Something is wrong ', err.stack);
 
         console.log('Job done!');
-
-
         //sends `download` functional to client, serving the tar`d folder with gulpfile
         res.download('./server/scaffold.tar.gz');
-    })
+    });
 
     // var newGulp = fs.createReadStream('./server/gulpFragments/gulpBase.js').pipe(fs.createWriteStream('./server/releaseDir/gulpfile.js')).pipe(
     // var newGulp = fs.writeFile('./server/releaseDir/gulpfile.js');
