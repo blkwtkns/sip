@@ -17,7 +17,7 @@ app.route('/gulp-tasks')
   .get(function(req, res, next) {
   console.log('/gulp-tasks');
 
-    fs.readdir('./gulp-tasks', function(err, files) {
+    fs.readdir('./client/gulp-tasks', function(err, files) {
       if (err) {
         console.log(err);
         res.send('');
@@ -57,11 +57,9 @@ app.get('/compress', function(req, res) {
             console.log('Something is wrong ', err.stack);
 
         console.log('Job done!');
-
-
         //sends `download` functional to client, serving the tar`d folder with gulpfile
         res.download('./server/scaffold.tar.gz');
-    })
+    });
 
     // var newGulp = fs.createReadStream('./server/gulpFragments/gulpBase.js').pipe(fs.createWriteStream('./server/releaseDir/gulpfile.js')).pipe(
     // var newGulp = fs.writeFile('./server/releaseDir/gulpfile.js');
