@@ -11,11 +11,10 @@ const CombinedStream = require('combined-stream2');
 app.use(express.static(path.join(__dirname + './../public')));
 app.use(bodyParser.json());
 
-
 app.route('/gulp-tasks')
   .get(function(req, res, next) {
   console.log('/gulp-tasks');
-
+    // gets all the files names in client/gulp-tasks and trims out the .js ending
     fs.readdir('./client/gulp-tasks', function(err, files) {
       if (err) {
         console.log(err);
@@ -32,9 +31,20 @@ app.route('/gulp-tasks')
   })
   .post(function(req, res, next) {
     console.log(req.body);
+    var name = req.body.ingredient;
+    var readStream = fs.createReadStream(path.join('./client/gulp-tasks/' + name + '.js'));
+    var data = '';
+    readStream.setEncoding('utf-8');
+    readStream.on('data', function(chunk) {
+      data += chunk;
+    });
+
+    readStream.on('end', function() {
+      console.log('ended');
+      console.log(data);
+      res.send(data);
+    });
   });
-
-
 
 
 //store of gulp fragments

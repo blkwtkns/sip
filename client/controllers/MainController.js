@@ -28,9 +28,10 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 				console.log('ingredients not in list');
 				return;
 			}
-
 			console.log($scope.ingredient);
 			recipeFactory.getRecipe($scope.ingredient);
+			$scope.clearSearch();
+
 		};
 
 		$scope.clearSearch = function() {
