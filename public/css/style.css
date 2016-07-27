@@ -156,6 +156,9 @@ ul {
   top: 0;
   width: 100%; }
 
+.recipe-display {
+  text-align: left; }
+
 @media only screen and (max-width: 850px) {
   .recipe {
     margin-right: 3%;

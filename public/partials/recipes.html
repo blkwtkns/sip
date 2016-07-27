@@ -1,12 +1,19 @@
 <div class="recipe-container">
   <h1>HEllo</h1>
-  <h2>{{recipesTest}}</h2>
+  <ul class="recipe-display">
+    <li ng-repeat="line in recipesTest">
+    <h2>{{line}}</h2>
+  </ul>
+  <!-- <h2>{{recipesTest}}</h2> -->
+  <h2>{{test}}</h2>
+  <h2>{{recipes}}</h2>
+  <button ng-click="findRecipe()">Find</button>
   <ul class="recipe-list">
-    <li class="recipe" ng-repeat="recipe in filtered = (recipes | filter:textFilter | limitTo: numLimit)">
-      <h4 class="recipe-title">{{recipe.title}}</h4>
-      <img class="recipe-image" ng-src="{{recipe.image_url}}" />
-      <p>Get Recipe!</p>
-      <a class="recipe-link" href="{{recipe.source_url}}"></a>
+      <li class="recipe" ng-repeat="recipe in recipesList">
+      <h4 class="recipe-title">{{recipe}}</h4>
+      <!-- <img class="recipe-image" ng-src="{{recipe.image_url}}" /> -->
+      <!-- <p>Get Recipe!</p> -->
+      <!-- <a class="recipe-link" href="{{recipe.source_url}}"></a> -->
     </li>
   </ul>
 </div>
