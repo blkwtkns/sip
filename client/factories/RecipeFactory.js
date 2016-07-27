@@ -12,16 +12,27 @@ angular.module('Slurpee.RecipeFactory', ['ngRoute'])
 
     strVar = strVar.split(';');
 
-    var getTest;
+    var recipesList = [];
 
     return {
       imgMinRecipe: strVar,
-      getTest: function() {
+      recipesList: recipesList,
+      getRecipesList: function() {
         return $http.get('/gulp-tasks');
       },
-      getRecipesList: function() {
-        return $http.get('/gulp-tasks-list');
+      saveRecipesList: function(recipesList) {
+        recipesList = recipesList;
+      },
+      getRecipe: function(ingredient) {
+        const data = {
+          ingredient: ingredient
+        };
+        return $http.post('/gulp-tasks', data);
+      },
+      test: function() {
+        console.log(recipesList);
       }
+
     };
 
 

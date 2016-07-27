@@ -19,12 +19,12 @@
 	<div ng-controller="MainController as MainCtrl" class="container cf">
 		{{name}}
 	  <form ng-submit="searchRecipe()">
-
 	    <div class="ingredient-actions">
-	      <input class="ingredient" type="text" placeholder="Enter Ingredients" name="ingredient" ng-model="ingredient">
+	      <input class="ingredient" type="text" placeholder="Slurp ingredients mmm..." name="ingredient" ng-model="ingredient">
 	      <input class="submit-ingredients" type="submit" value="Search Recipes"/>
 	      <input class="clear-ingredients" ng-click="clearSearch()" type="button" value="Clear Ingredients" />
 	    </div>
+		</form>
 
 	    <div class="filter-options" ng-hide="filterOptions">
 	      <label class="label">Filters: </label>
@@ -45,7 +45,7 @@
 				</div>
 	    </div>
 
-	  </form>
+
 
 
 
