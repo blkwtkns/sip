@@ -1,6 +1,6 @@
 angular.module('Slurpee.MainController', ['ngRoute'])
-	.controller('MainController', ['$scope', '$http',  'GulpFactory', 'WebpackFactory', 'GulpAceFactory', 'WebpackAceFactory',
-	function($scope, $http, gulpFactory, webpackFactory, gulpAceFactory, webpackAceFactory) {
+	.controller('MainController', ['$scope', '$http',  'GulpFactory', 'WebpackFactory', 'GulpAceFactory', 'WebpackAceFactory', '$location',
+	function($scope, $http, gulpFactory, webpackFactory, gulpAceFactory, webpackAceFactory, $location) {
 		$scope.gulpIngredient = null;
 		$scope.webpackIngrendient = null;
 		// Ace editor model binding
@@ -24,6 +24,7 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		});
 
 		$scope.searchGulp = function(gulpIngredient) {
+			$location.path('/recipes');
 			if (gulpIngredient) {
 				gulpFactory.getRecipe(gulpIngredient);
 				return;
@@ -49,6 +50,7 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		};
 
 		$scope.searchWebpack = function(webpackIngredient) {
+			$location.path('/webpack-recipe');
 			if (webpackIngredient) {
 				webpackFactory.getRecipe(webpackIngredient);
 				return;
