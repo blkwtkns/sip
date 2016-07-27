@@ -33,9 +33,9 @@ describe('Testing AngularJS Test Suite', function(){
         saveRecipesList: function(recipesList) {
           recipesList = recipesList;
         },
-        getRecipe: function(ingredient) {
+        getRecipe: function(gulpIngredient) {
           const data = {
-            ingredient: ingredient
+            gulpIngredient: gulpIngredient
           };
           $rootScope.$broadcast('getRecipe called');
           return $http.post('/gulp-tasks', data)
@@ -64,9 +64,9 @@ describe('Testing AngularJS Test Suite', function(){
           }))
 
     describe('Testing existence and default values of scope properties and methods on MainController', function() {
-        it('should have scope property ingredients', function() {
-          expect(scope.ingredient).toBeDefined();
-          expect(scope.ingredient).toBe(null);
+        it('should have scope property gulpIngredients', function() {
+          expect(scope.gulpIngredient).toBeDefined();
+          expect(scope.gulpIngredient).toBe(null);
         });
 
         it('should have scope property filterOptions', function() {
@@ -84,23 +84,19 @@ describe('Testing AngularJS Test Suite', function(){
           expect(scope.numLimit).toBe(null);
         });
 
-        it('should have scope property recipesList', function() {
-          expect(scope.recipesList).toBeDefined();
-          expect(JSON.stringify(scope.recipesList)).toBe(JSON.stringify([]));
-        });
 
-        it('should have scope function searchRecipe', function() {
-          expect(scope.searchRecipe).toBeDefined();
+        it('should have scope function searchGulp', function() {
+          expect(scope.searchGulp).toBeDefined();
           //test functionality of this function
-          expect(typeof scope.searchRecipe).toBe('function');
+          expect(typeof scope.searchGulp).toBe('function');
         });
 
-        it('should clear the ingredient field', function() {
+        it('should clear the gulpIngredient field', function() {
 
-          scope.ingredient = "random";
-          expect(scope.ingredient.length).toBe(6)
+          scope.gulpIngredient = "random";
+          expect(scope.gulpIngredient.length).toBe(6)
           scope.clearSearch();
-          expect(scope.ingredient.length).toBe(0);
+          expect(scope.gulpIngredient.length).toBe(0);
         })
 
         it('should clear the filter field', function() {
@@ -113,13 +109,13 @@ describe('Testing AngularJS Test Suite', function(){
 
   })
 
-    describe('Testing searchRecipe ', function () {
+    describe('Testing searchGulp ', function () {
       //bad test, please update this and add a $broadcast
       //when the underlying function is called
       it('should call the function getRecipe', function () {
-        spyOn(scope, 'searchRecipe')
-        scope.searchRecipe()
-        expect(scope.searchRecipe).toHaveBeenCalled();
+        spyOn(scope, 'searchGulp')
+        scope.searchGulp()
+        expect(scope.searchGulp).toHaveBeenCalled();
       })
     })
 

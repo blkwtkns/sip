@@ -69,7 +69,7 @@ describe('Testing AngularJS Test Suite', function(){
     describe('Testing existence and default values of scope properties and methods on GulpController', function() {
         it('should have scope property header', function() {
           expect(scope.header).toBeDefined();
-          expect(scope.header).toBe('Sip Ingredients');
+          expect(scope.header).toBe('Gulp Sip Recipes');
         });
 
         it('should have scope property singleRecipe', function() {
