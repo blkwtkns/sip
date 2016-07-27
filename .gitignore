@@ -4,3 +4,4 @@ npm-debug.log
 .DS_Store
 /public/js/main.js
 /public/css/style.css
+/server/releaseDir/gulpfile.js
