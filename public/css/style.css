@@ -1,8 +1,11 @@
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: #5c6b80;
+  color: #46bdd1;
   font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+
+.ace_editor {
+  height: 200px; }
 
 h1, h2, h3, h4, h5, p, ul, li {
   margin: 0;
@@ -11,17 +14,28 @@ h1, h2, h3, h4, h5, p, ul, li {
 *, *:before, *:after {
   box-sizing: border-box; }
 
+.navbar-brand img {
+  width: 30px; }
+
 .header {
   margin: 0 auto;
-  max-width: 400px;
-  padding: 30px 0 20px;
+  max-width: 330px;
+  overflow: auto;
+  padding: 30px 0 40px;
   position: relative; }
 
-.gulp-logo {
-  max-width: 40px;
-  position: absolute;
-  left: -10px;
-  top: 15px; }
+.sip-logo {
+  max-width: 130px;
+  display: block;
+  margin: 0 auto 20px; }
+
+.code-title,
+.ingredients-title {
+  padding-bottom: 20px; }
+
+.ace-container {
+  margin: 10px 0;
+  height: 500px; }
 
 ul {
   list-style-type: none; }
@@ -35,8 +49,8 @@ ul {
   text-align: center; }
 
 .title {
-  color: #c27ba0;
-  margin-bottom: 20px; }
+  color: #46bdd1;
+  text-align: center; }
 
 .ingredient,
 .text-filter {
@@ -93,10 +107,6 @@ ul {
   background-color: #aaa;
   color: #fff; }
 
-.recipe-container {
-  margin: 30px auto;
-  max-width: 1000px; }
-
 .error {
   font-weight: bold;
   text-align: center; }
@@ -106,12 +116,12 @@ ul {
   padding: 10px 0; }
 
 .recipe-title {
-  color: #c27ba0;
+  color: #46bdd1;
   margin-bottom: 20px;
   min-height: 40px; }
 
 .recipe {
-  border: 1px solid #c27ba0;
+  border: 1px solid #46bdd1;
   border-radius: 3px;
   float: left;
   margin-bottom: 30px;
@@ -159,7 +169,7 @@ ul {
 .recipe-display {
   text-align: left; }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 1092px) {
   .recipe {
     margin-right: 3%;
     width: 48.5%; }

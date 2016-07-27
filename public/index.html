@@ -7,47 +7,92 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="/css/style.css">
+	<script type="text/javascript" src="./bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+	<script type="text/javascript" src="./bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="./bower_components/angular-ui-ace/ui-ace.js"></script>
 	<script src="/js/main.js"></script>
 </head>
 <body>
+	<ng-include src="partials/test2.html"></ng-include>
+
+	<!-- Static navbar -->
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="./img/SipLogo_01.png" /></a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="../navbar/">Default</a></li>
+          <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
+          <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
 	<div class="header">
-		<img class="gulp-logo" src="./img/gulp-logo.png" />
-		<h2 class="title">Slurpees: A gulp tasks generator</h2>
+		<img class="sip-logo" src="./img/SipLogo_02.png" />
+		<h4 class="title">A Thirsty Gulp and Webpack Generator</h4>
 	</div>
 
-
 	<div ng-controller="MainController as MainCtrl" class="container cf">
-		{{name}}
-	  <form ng-submit="searchRecipe()">
-
+	  <form ng-submit="searchGulp()">
 	    <div class="ingredient-actions">
-	      <input class="ingredient" type="text" placeholder="Enter Ingredients" name="ingredient" ng-model="ingredient">
-	      <input class="submit-ingredients" type="submit" value="Search Recipes"/>
-	      <input class="clear-ingredients" ng-click="clearSearch()" type="button" value="Clear Ingredients" />
+	      <input class="ingredient" type="text" placeholder="Slurp ingredients mmm..." name="ingredient" ng-model="gulpIngredient">
+	      <input class="submit-ingredients" type="submit" value="Search Gulp Recipes"/>
+	      <!-- <input class="clear-ingredients" ng-click="clearSearch()" type="button" value="Clear Ingredients" /> -->
 	    </div>
+		</form>
+		<form ng-submit="searchWebpack()">
+			<div class="ingredient-actions">
+				<input class="ingredient" type="text" placeholder="Slurp ingredients mmm..." name="ingredient" ng-model="webpackIngrendient">
+				<input class="submit-ingredients" type="submit" value="Search Webpack Recipes"/>
+				<!-- <input class="clear-ingredients" ng-click="clearSearch()" type="button" value="Clear Ingredients" /> -->
+			</div>
+		</form>
 
-	    <div class="filter-options" ng-hide="filterOptions">
-	      <label class="label">Filters: </label>
-	      <input class="text-filter" placeholder="Filter By Name" type="text" name="textFilter" ng-model="textFilter">
-	      <input class="clear-ingredients" ng-click="clearFilter()" type="button" value="Clear Filter" />
-	      <select class="num-filter" ng-model="numLimit">
-	        <option value="4">4</option>
-	        <option value="8">8</option>
-	        <option value="12">12</option>
-	        <option value="20">20</option>
-	      </select>
+    <div class="filter-options" ng-hide="filterOptions">
+      <label class="label">Filters: </label>
+      <input class="text-filter" placeholder="Filter By Name" type="text" name="textFilter" ng-model="textFilter">
+      <input class="clear-ingredients" ng-click="clearFilter()" type="button" value="Clear Filter" />
+      <select class="num-filter" ng-model="numLimit">
+        <option value="4">4</option>
+        <option value="8">8</option>
+        <option value="12">12</option>
+        <option value="20">20</option>
+      </select>
 
-	      <h3 class='searched-ingredient'>{{filtered.length}} {{searchedIngredient}}</h3>
-				<a href="#/test">Test</a>
-				<a href='#/recipes'>Recipes</a>
-				<div ng-view>
+      <h3 class='searched-ingredient'>{{filtered.length}} {{searchedIngredient}}</h3>
+			<a href="#/webpack-recipe">Webpack</a>
+			<a href='#/recipes'>Gulp</a>
+			<div ng-view>
 
-				</div>
-	    </div>
-
-	  </form>
-
-
-
+			</div>
+    </div>
+  </div>
 </body>
 </html>
