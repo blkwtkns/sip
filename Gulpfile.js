@@ -23,4 +23,4 @@ gulp.task('gulpmon', function () {
   });
 });
 
-gulp.task('default', ['gulpmon', 'browserify', 'sass', 'imageMin', 'watch']);
+gulp.task('default', ['gulpmon', 'browserify', 'sass', 'imageMin', 'bower', 'watch']);
