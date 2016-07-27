@@ -32,7 +32,6 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "angular": "^1.5.8",
-    "body-parser": "^1.15.2",
     "combined-stream2": "^1.1.2",
     "express": "^4.14.0",
     "tar.gz": "^1.0.5"
