@@ -1,6 +1,6 @@
 // sends post request to server which reads all the gulp task files
-angular.module('Slurpee.RecipeFactory', ['ngRoute'])
-  .factory('RecipeFactory', ['$http', function($http) {
+angular.module('Slurpee.GulpFactory', ['ngRoute'])
+  .factory('GulpFactory', ['$http', function($http) {
     var strVar = "";
     strVar += "var gulp = require('gulp');";
     strVar += "var imageMin = require('gulp-imagemin');";
