@@ -56,16 +56,23 @@
 
 	<div class="header">
 		<img class="sip-logo" src="./img/SipLogo_02.png" />
-		<h4 class="title">A Thirsty Gulp Generator</h4>
+		<h4 class="title">A Thirsty Gulp and Webpack Generator</h4>
 	</div>
 
 	<div ng-controller="MainController as MainCtrl" class="container cf">
-	  <form ng-submit="searchRecipe()">
+	  <form ng-submit="searchGulp()">
 	    <div class="ingredient-actions">
-	      <input class="ingredient" type="text" placeholder="Slurp ingredients mmm..." name="ingredient" ng-model="ingredient">
-	      <input class="submit-ingredients" type="submit" value="Search Recipes"/>
-	      <input class="clear-ingredients" ng-click="clearSearch()" type="button" value="Clear Ingredients" />
+	      <input class="ingredient" type="text" placeholder="Slurp ingredients mmm..." name="ingredient" ng-model="gulpIngredient">
+	      <input class="submit-ingredients" type="submit" value="Search Gulp Recipes"/>
+	      <!-- <input class="clear-ingredients" ng-click="clearSearch()" type="button" value="Clear Ingredients" /> -->
 	    </div>
+		</form>
+		<form ng-submit="searchWebpack()">
+			<div class="ingredient-actions">
+				<input class="ingredient" type="text" placeholder="Slurp ingredients mmm..." name="ingredient" ng-model="webpackIngrendient">
+				<input class="submit-ingredients" type="submit" value="Search Webpack Recipes"/>
+				<!-- <input class="clear-ingredients" ng-click="clearSearch()" type="button" value="Clear Ingredients" /> -->
+			</div>
 		</form>
 
     <div class="filter-options" ng-hide="filterOptions">
