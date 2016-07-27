@@ -11,6 +11,18 @@ h1, h2, h3, h4, h5, p, ul, li
 *, *:before, *:after
   box-sizing: border-box
 
+.header
+  margin: 0 auto
+  max-width: 400px
+  padding: 30px 0 20px
+  position: relative
+
+.gulp-logo
+  max-width: 40px
+  position: absolute
+  left: -10px
+  top: 15px
+
 ul
   list-style-type: none
 
@@ -164,28 +176,28 @@ ul
   top: 0
   width: 100%
 
+.recipe-display
+  text-align: left
 
-@media only screen and (max-width: 850px) 
+@media only screen and (max-width: 850px)
   .recipe
     margin-right: 3%
     width: 48.5%
-  
+
 
   .recipe:nth-child(2n)
     margin-right: 0
-  
+
 
   .recipe-image
     height: 250px
-  
 
 
-@media only screen and (max-width: 500px) 
+
+@media only screen and (max-width: 500px)
   .recipe
     width: 100%
-  
+
 
   .recipe-image
     height: initial
-  
-

@@ -64,5 +64,27 @@ app.get('/compress', function(req, res) {
     // you can add a directory using directory function
     // archive.directory('./releaseDir', './releaseDir.zip');
     // archive.finalize();
+});
 
+app.get('/gulp-tasks', function(req, res) {
+  console.log('gulp-tasks');
+  res.json({
+    test: 'test1',
+    test2: 'test2'
+  });
+});
+
+app.get('/gulp-tasks-list', function(req, res) {
+  console.log('/gulp-tasks-list');
+
+  fs.readdir('./gulp-tasks', function(err, files) {
+    if (err) {
+      console.log(err);
+      res.send('');
+    } else {
+      console.log('files array');
+      console.log(files);
+      res.json(files);
+    }
+  });
 });

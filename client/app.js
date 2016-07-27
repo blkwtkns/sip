@@ -1,32 +1,29 @@
-require('angular')
-var MainController = require('./controllers/MainController')
+require('angular');
+
+require('./controllers/MainController');
+require('./controllers/TestController');
+require('./controllers/RecipesController');
+require('./factories/RecipeFactory');
 
 angular.module('app', [
 	require('angular-route'),
-	require('angular-animate')
+	require('angular-animate'),
+	'Slurpee.MainController',
+	'Slurpee.TestController',
+	'Slurpee.RecipesController',
+	'Slurpee.RecipeFactory'
 	])
-	.controller('MainController', ['$scope', '$http', MainController])
-	// .directive('recipeList', recipeList)
- //  .directive('filterOptions', filterOptions)
- //  .directive('searchIngredients', searchIngredients);
+	.config(['$routeProvider', configFunction]);
 
-// function recipeList() {
-//   return {
-//     restrict: 'E',
-//     templateUrl: '../app/directives/recipe-list.html'
-//   }
-// }
-
-// function filterOptions() {
-//   return {
-//     restrict: 'E',
-//     templateUrl: '../app/directives/filter-options.html'
-//   }
-// }
-
-// function searchIngredients() {
-//   return {
-//     restrict: 'E',
-//     templateUrl: '../app/directives/search-ingredients.html'
-//   }
-// }
+function configFunction($routeProvider) {
+		// all routes are currently from the public folder
+		$routeProvider
+	    .when('/test', {
+	      templateUrl: './partials/test.html',
+	      controller: 'TestController'
+	    })
+			.when('/recipes', {
+				templateUrl: './partials/recipes.html',
+				controller: 'RecipesController'
+			});
+	}
