@@ -1,7 +1,7 @@
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: #5c6b80;
+  color: #46bdd1;
   font-family: "Open Sans", Helvetica, Arial, sans-serif; }
 
 .ace_editor {
@@ -20,11 +20,9 @@ h1, h2, h3, h4, h5, p, ul, li {
   padding: 30px 0 20px;
   position: relative; }
 
-.gulp-logo {
-  max-width: 40px;
-  position: absolute;
-  left: -10px;
-  top: 15px; }
+.sip-logo {
+  max-width: 70px;
+  float: left; }
 
 ul {
   list-style-type: none; }
@@ -38,8 +36,10 @@ ul {
   text-align: center; }
 
 .title {
-  color: #c27ba0;
-  margin-bottom: 20px; }
+  color: #46bdd1;
+  line-height: 70px;
+  margin-bottom: 20px;
+  overflow: auto; }
 
 .ingredient,
 .text-filter {

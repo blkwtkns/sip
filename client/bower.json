@@ -1,0 +1,17 @@
+{
+  "name": "gulp-angular-for-newbs",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Binh Nguyen"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/binhxn/gulp-angular-for-newbs",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
