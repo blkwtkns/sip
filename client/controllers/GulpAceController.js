@@ -1,5 +1,5 @@
-angular.module('Slurpee.AceController', ['ngRoute'])
-	.controller('AceController', ['$scope', function($scope) {
+angular.module('Slurpee.GulpAceController', ['ngRoute'])
+	.controller('GulpAceController', ['$scope', function($scope) {
 		$scope.aceCode = "var gulp = require('gulp');\n" +
 			"var requireDir = require('require-dir');\n" +
 			"var nodemon = require('gulp-nodemon');\n\n" +
