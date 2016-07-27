@@ -1,9 +1,13 @@
-require('./controllers/GulpAceController');
-require('./controllers/WebpackAceController');
+
 require('./controllers/MainController');
 require('./controllers/TestController');
 require('./controllers/RecipesController');
+require('./controllers/GulpAceController');
+require('./controllers/WebpackAceController');
+
 require('./factories/RecipeFactory');
+require('./factories/GulpAceFactory');
+require('./factories/WebpackAceFactory');
 
 angular.module('app', [
 	require('angular-route'),
@@ -11,9 +15,11 @@ angular.module('app', [
 	'Slurpee.MainController',
 	'Slurpee.TestController',
 	'Slurpee.RecipesController',
-	'Slurpee.RecipeFactory',
 	'Slurpee.GulpAceController',
 	'Slurpee.WebpackAceController',
+	'Slurpee.RecipeFactory',
+	'Slurpee.WebpackAceFactory',
+	'Slurpee.GulpAceFactory',
 	'ui.ace'
 	])
 	.config(['$routeProvider', configFunction]);

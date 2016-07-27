@@ -1,7 +1,7 @@
 angular.module('Slurpee.MainController', ['ngRoute'])
-	.controller('MainController', ['$scope', '$http',  'RecipeFactory', function($scope, $http, recipeFactory) {
+	.controller('MainController', ['$scope', '$http',  'RecipeFactory', 'GulpAceFactory', 'WebpackAceFactory',
+	function($scope, $http, recipeFactory, gulpAceFactory, webpackAceFactory) {
 		$scope.ingredient = null;
-
 		// Ace editor model binding
 		$scope.aceChecked;
 
