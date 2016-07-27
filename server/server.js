@@ -12,53 +12,65 @@ app.use(express.static(path.join(__dirname + './../public')));
 app.use(bodyParser.json());
 
 app.route('/gulp-tasks')
-  .get(function(req, res, next) {
-  console.log('/gulp-tasks');
-    // gets all the files names in client/gulp-tasks and trims out the .js ending
-    fs.readdir('./client/gulp-tasks', function(err, files) {
-      if (err) {
-        console.log(err);
-        res.send('');
-      } else {
-        files = files.map(function(element) {
-          return element.replace(/\.[^/.]+$/, "");
+    .get(function(req, res, next) {
+        console.log('/gulp-tasks');
+        // gets all the files names in client/gulp-tasks and trims out the .js ending
+        fs.readdir('./client/gulp-tasks', function(err, files) {
+            if (err) {
+                console.log(err);
+                res.send('');
+            } else {
+                files = files.map(function(element) {
+                    return element.replace(/\.[^/.]+$/, "");
+                });
+                console.log('files array');
+                console.log(files);
+                res.json(files);
+            }
         });
-        console.log('files array');
-        console.log(files);
-        res.json(files);
-      }
+    })
+    .post(function(req, res, next) {
+        console.log(req.body);
+        var name = req.body.ingredient;
+        var readStream = fs.createReadStream(path.join('./client/gulp-tasks/' + name + '.js'));
+        var writeStream = fs.createWriteStream(path.join('./server/gulpFragments/' + name + '.js'));
+        var data = '';
+        readStream.setEncoding('utf-8');
+        readStream.on('data', function(chunk) {
+            data += chunk;
+            writeStream.write(chunk);
+        });
+        readStream.on('end', function() {
+            console.log('ended');
+            console.log(data);
+            writeStream.close();
+            res.send(data);
+        });
     });
-  })
-  .post(function(req, res, next) {
-    console.log(req.body);
-    var name = req.body.ingredient;
-    var readStream = fs.createReadStream(path.join('./client/gulp-tasks/' + name + '.js'));
-    var data = '';
-    readStream.setEncoding('utf-8');
-    readStream.on('data', function(chunk) {
-      data += chunk;
-    });
-
-    readStream.on('end', function() {
-      console.log('ended');
-      console.log(data);
-      res.send(data);
-    });
-  });
 
 
 //store of gulp fragments
-var gulpBase = './server/gulpFragments/gulpBase.js';
-var gulpSass = './server/gulpFragments/gulpSass.js';
+// var gulpBase = './server/gulpFragments/gulpBase.js';
+// var gulpSass = './server/gulpFragments/gulpSass.js';
 
 //end point at `/compress`
-app.get('/compress', function(req, res) {
+  app.route('/compress')
+    .get(function(req, res, next) {
 
-    //Concating `gulp fragments` as appended read streams, then writing them to one `gulpfile`
+    //appends all frags together and pipes the writeStream to releaseDir
     var combinedStream = CombinedStream.create();
-    combinedStream.append(fs.createReadStream(gulpBase));
-    combinedStream.append(fs.createReadStream(gulpSass));
-    combinedStream.pipe(fs.createWriteStream('./server/releaseDir/gulpfile.js'));
+    fs.readdir(path.join('./server/gulpFragments'), function(err, files) {
+
+        files.forEach(function(file, idx) {
+            combinedStream.append(fs.createReadStream(file));
+        })
+        combinedStream.pipe(fs.createWriteStream(path.join('./server/releaseDir/gulpfile.js')));
+    });
+    //Concating `gulp fragments` as appended read streams, then writing them to one `gulpfile`
+    // var combinedStream = CombinedStream.create();
+    // combinedStream.append(fs.createReadStream(gulpBase));
+    // combinedStream.append(fs.createReadStream(gulpSass));
+    // combinedStream.pipe(fs.createWriteStream('./server/releaseDir/gulpfile.js'));
 
     //tar.gz compression
     targz().compress('./server/releaseDir', './server/scaffold.tar.gz', function(err) {
