@@ -16,13 +16,19 @@ h1, h2, h3, h4, h5, p, ul, li
 
 .header
   margin: 0 auto
-  max-width: 400px
-  padding: 30px 0 20px
+  max-width: 330px
+  overflow: auto
+  padding: 30px 0 40px
   position: relative
 
 .sip-logo
-  max-width: 70px
-  float: left
+  max-width: 130px
+  display: block
+  margin: 0 auto 20px
+
+.code-title,
+.ingredients-title
+  margin-bottom: 20px
 
 ul
   list-style-type: none
@@ -37,9 +43,7 @@ ul
 
 .title
   color: #46bdd1
-  line-height: 70px
-  margin-bottom: 20px
-  overflow: auto
+  text-align: center
 
 .ingredient,
 .text-filter
@@ -106,11 +110,6 @@ ul
   color: #fff
 
 
-.recipe-container
-  margin: 30px auto
-  max-width: 1000px
-
-
 .error
   font-weight: bold
   text-align: center
@@ -118,17 +117,16 @@ ul
 
 .recipe-list
   overflow: auto
-  padding: 10px 0
 
 
 .recipe-title
-  color: #c27ba0
+  color: #46bdd1
   margin-bottom: 20px
   min-height: 40px
 
 
 .recipe
-  border: 1px solid #c27ba0
+  border: 1px solid #46bdd1
   border-radius: 3px
   float: left
   margin-bottom: 30px
@@ -182,25 +180,25 @@ ul
 .recipe-display
   text-align: left
 
-@media only screen and (max-width: 850px)
-  .recipe
-    margin-right: 3%
-    width: 48.5%
+// @media only screen and (max-width: 850px)
+//   .recipe
+//     margin-right: 3%
+//     width: 48.5%
 
 
-  .recipe:nth-child(2n)
-    margin-right: 0
+//   .recipe:nth-child(2n)
+//     margin-right: 0
 
 
-  .recipe-image
-    height: 250px
+//   .recipe-image
+//     height: 250px
 
 
 
-@media only screen and (max-width: 500px)
-  .recipe
-    width: 100%
+// @media only screen and (max-width: 500px)
+//   .recipe
+//     width: 100%
 
 
-  .recipe-image
-    height: initial
+//   .recipe-image
+//     height: initial

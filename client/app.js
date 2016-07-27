@@ -1,4 +1,5 @@
 require('./controllers/GulpAceController');
+require('./controllers/WebpackAceController');
 require('./controllers/MainController');
 require('./controllers/TestController');
 require('./controllers/RecipesController');
@@ -12,6 +13,7 @@ angular.module('app', [
 	'Slurpee.RecipesController',
 	'Slurpee.RecipeFactory',
 	'Slurpee.GulpAceController',
+	'Slurpee.WebpackAceController',
 	'ui.ace'
 	])
 	.config(['$routeProvider', configFunction]);
@@ -19,8 +21,8 @@ angular.module('app', [
 function configFunction($routeProvider) {
 		// all routes are currently from the public folder
 		$routeProvider
-	    .when('/test', {
-	      templateUrl: './partials/test.html',
+	    .when('/webpack-recipe', {
+	      templateUrl: './partials/webpack-recipe.html',
 	      controller: 'TestController'
 	    })
 			.when('/recipes', {
