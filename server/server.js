@@ -59,12 +59,12 @@ app.route('/gulp-tasks')
 
     //appends all frags together and pipes the writeStream to releaseDir
     var combinedStream = CombinedStream.create();
-    fs.readdir(path.join('./server/gulpFragments'), function(err, files) {
+    fs.readdir('./server/gulpFragments', function(err, files) {
 
         files.forEach(function(file, idx) {
             combinedStream.append(fs.createReadStream(file));
         })
-        combinedStream.pipe(fs.createWriteStream(path.join('./server/releaseDir/gulpfile.js')));
+        combinedStream.pipe(fs.createWriteStream('./server/releaseDir/gulpfile.js'));
     });
     //Concating `gulp fragments` as appended read streams, then writing them to one `gulpfile`
     // var combinedStream = CombinedStream.create();
