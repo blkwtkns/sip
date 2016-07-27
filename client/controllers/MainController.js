@@ -41,4 +41,10 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		$scope.clearFilter = function() {
 			$scope.textFilter = "";
 		};
+
+    $scope.download = function(){
+      console.log('wtf');
+      recipeFactory.getDownload();
+    };
+
 	}]);

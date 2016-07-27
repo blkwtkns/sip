@@ -32,6 +32,9 @@ angular.module('Slurpee.RecipeFactory', ['ngRoute'])
       },
       test: function() {
         console.log(this.recipesList);
+      },
+      getDownload: function(){
+        return $http.get('/download');
       }
 
     };
