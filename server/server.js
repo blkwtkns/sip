@@ -49,7 +49,7 @@ app.route('/gulp-tasks')
 
     });
 
-//webpack functionality, logic needs work, currently cut and paste from way above
+//webpack functionality
 app.route('/webpack-tasks')
     .get(function(req, res, next) {
         console.log('/webpack-tasks');
