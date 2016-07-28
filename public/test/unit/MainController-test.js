@@ -33,11 +33,10 @@ describe('Testing AngularJS Test Suite', function(){
         saveRecipesList: function(recipesList) {
           recipesList = recipesList;
         },
-        getRecipe: function(gulpIngredient) {
+        getRecipe: function(ingredient) {
           const data = {
-            gulpIngredient: gulpIngredient
+            ingredient: ingredient
           };
-          $rootScope.$broadcast('getRecipe called');
           return $http.post('/gulp-tasks', data)
             .then(function(res) {
               console.log(res.data);
@@ -45,6 +44,10 @@ describe('Testing AngularJS Test Suite', function(){
         },
         test: function() {
           console.log(this.recipesList);
+        },
+        getDownload: function(){
+
+          return $http.get('/download');
         }
 
 			};
@@ -64,10 +67,6 @@ describe('Testing AngularJS Test Suite', function(){
           }))
 
     describe('Testing existence and default values of scope properties and methods on MainController', function() {
-        it('should have scope property gulpIngredients', function() {
-          expect(scope.gulpIngredient).toBeDefined();
-          expect(scope.gulpIngredient).toBe(null);
-        });
 
         it('should have scope property filterOptions', function() {
           expect(scope.filterOptions).toBeDefined();
@@ -91,25 +90,38 @@ describe('Testing AngularJS Test Suite', function(){
           expect(typeof scope.searchGulp).toBe('function');
         });
 
-        it('should clear the gulpIngredient field', function() {
-
-          scope.gulpIngredient = "random";
-          expect(scope.gulpIngredient.length).toBe(6)
-          scope.clearSearch();
-          expect(scope.gulpIngredient.length).toBe(0);
-        })
-
-        it('should clear the filter field', function() {
-
-          scope.textFilter = "random";
-          expect(scope.textFilter.length).toBe(6)
-          scope.clearFilter();
-          expect(scope.textFilter.length).toBe(0);
-        })
 
   })
+    describe('testing clearSearch function', function () {
+      it('should clear the gulpIngredient field', function() {
 
-    describe('Testing searchGulp ', function () {
+        scope.gulpIngredient = "random";
+        expect(scope.gulpIngredient.length).toBe(6)
+        scope.clearSearch();
+        expect(scope.gulpIngredient.length).toBe(0);
+      })
+
+      it('should clear the webpackIngredient field', function() {
+        scope.webpackIngredient = "random";
+        expect(scope.webpackIngredient.length).toBe(6)
+        scope.clearSearch2();
+        expect(scope.webpackIngredient.length).toBe(0);
+      })
+
+    })
+
+    describe('testing clearFilter function', function () {
+
+      it('should clear the filter field', function() {
+
+        scope.textFilter = "random";
+        expect(scope.textFilter.length).toBe(6)
+        scope.clearFilter();
+        expect(scope.textFilter.length).toBe(0);
+      })
+    })
+
+    describe('Testing searchGulp', function () {
       //bad test, please update this and add a $broadcast
       //when the underlying function is called
       it('should call the function getRecipe', function () {
@@ -117,6 +129,18 @@ describe('Testing AngularJS Test Suite', function(){
         scope.searchGulp()
         expect(scope.searchGulp).toHaveBeenCalled();
       })
+    })
+
+    describe('Testing download', function () {
+      //bad test, please update this and add a $broadcast
+      //when the underlying function is called
+      it('should call the function download', function () {
+        spyOn(scope, 'download')
+        scope.download()
+        expect(scope.download).toHaveBeenCalled();
+      })
+
+
     })
 
 })

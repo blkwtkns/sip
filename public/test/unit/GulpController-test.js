@@ -42,6 +42,9 @@ describe('Testing AngularJS Test Suite', function(){
         },
         test: function() {
           console.log(this.recipesList);
+        },
+        getDownload: function(){
+          return $http.get('/download');
         }
 
 			};
@@ -88,8 +91,8 @@ describe('Testing AngularJS Test Suite', function(){
 
 				    expect(scope.singleRecipe[0]).toBe("var gulp = require('gulp')")
         });
-
-
-
   })
+
+
+
 })

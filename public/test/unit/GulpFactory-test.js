@@ -22,16 +22,18 @@ describe('Testing AngularJS Test Suite', function(){
         expect(GulpFactory.recipesList).toBeDefined();
         expect(GulpFactory.getRecipesList).toBeDefined();
         expect(GulpFactory.getRecipe).toBeDefined();
+        expect(GulpFactory.getDownload).toBeDefined();
       })
     })
 
-    describe('Testing that the function gets called', function () {
+    describe('Testing that the getRecipesList function gets called', function () {
 
-      it('should call the functions', function(){
+      it('should call the getRecipesList functions', function (){
       httpBackend.expectGET('/gulp-tasks').respond({
         "0":"bower.js",
         "1":"connect.js"
       })
+
       var returnFromFunc;
       GulpFactory.getRecipesList().then(function(data){returnFromFunc = data.data});
       timeout.flush()
@@ -39,8 +41,41 @@ describe('Testing AngularJS Test Suite', function(){
 
       expect(returnFromFunc[0]).toBe('bower.js')
 
+      });
+    });
+
+  describe('Testing that the getDownload function gets called', function () {
+
+    it('should call the getRecipesList functions', function (){
+    httpBackend.expectGET('/download').respond({
+      "0":"bower.js",
+      "1":"connect.js"
+    })
+
+    var returnFromFunc;
+    GulpFactory.getDownload().then(function(data){returnFromFunc = data.data});
+    timeout.flush()
+    httpBackend.flush();
+
+    expect(returnFromFunc[0]).toBe('bower.js')
 
     });
   });
+
+  describe('Testing saveRecipesList', function () {
+    //bad test, please update this and add a $broadcast
+    //when the underlying function is called
+    it('should call the function saveRecipesList', function () {
+      spyOn(GulpFactory, 'saveRecipesList')
+      GulpFactory.saveRecipesList()
+      expect(GulpFactory.saveRecipesList).toHaveBeenCalled();
+    })
+  })
+
+
+
+
   });
+
+
 });

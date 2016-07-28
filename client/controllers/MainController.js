@@ -2,7 +2,7 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 	.controller('MainController', ['$scope', '$http',  'GulpFactory', 'WebpackFactory', 'GulpAceFactory', 'WebpackAceFactory', '$location',
 	function($scope, $http, gulpFactory, webpackFactory, gulpAceFactory, webpackAceFactory, $location) {
 		$scope.gulpIngredient;
-		$scope.webpackIngrendient;
+		$scope.webpackIngredient;
 		// Ace editor model binding
 		$scope.aceChecked;
 
@@ -79,7 +79,7 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		};
 
 		$scope.clearSearch2 = function() {
-			$scope.webpackIngrendient = '';
+			$scope.webpackIngredient = '';
 		}
 
 		$scope.clearFilter = function() {
@@ -87,7 +87,6 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		};
 
     $scope.download = function(){
-      console.log('wtf');
       gulpFactory.getDownload();
     };
 
