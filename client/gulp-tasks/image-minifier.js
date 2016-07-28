@@ -1,4 +1,3 @@
-var gulp = require('gulp');
 var imageMin = require('gulp-imagemin');
 
 gulp.task('imageMin', function() {
