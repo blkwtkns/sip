@@ -1,3 +1,6 @@
+.read-only {
+  text-align: center; }
+
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
