@@ -1,5 +1,5 @@
 angular.module('Slurpee.GulpController', ['ngRoute'])
-	.controller('GulpController', ['$scope', 'GulpFactory', '$location', function($scope, gulpFactory, $location) {
+	.controller('GulpController', ['$scope', 'GulpFactory', '$location', 'GulpAceFactory', function($scope, gulpFactory, $location, gulpAceFactory) {
 		$scope.header = 'Gulp Sip Recipes';
 
 		$scope.singleRecipe = gulpFactory.imgMinRecipe;
@@ -8,6 +8,7 @@ angular.module('Slurpee.GulpController', ['ngRoute'])
 		$scope.recipe = null;
 		gulpFactory.getRecipesList().then(function(res) {
 			$scope.recipesList = res.data;
+
 			// on success write list into the factory
 			gulpFactory.recipesList = res.data;
 		});

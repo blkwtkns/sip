@@ -1,6 +1,6 @@
 angular.module('Slurpee.WebpackAceFactory', ['ngRoute'])
   .factory('WebpackAceFactory', [function() {
     return {
-      acecode: ''
+      code: 'var webpack = require("webpack");\n\n'
     };
   }]);
