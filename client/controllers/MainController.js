@@ -1,18 +1,29 @@
 angular.module('Slurpee.MainController', ['ngRoute'])
-	.controller('MainController', ['$scope', '$http',  'GulpFactory', 'WebpackFactory', 'GulpAceFactory', 'WebpackAceFactory',
-	function($scope, $http, gulpFactory, webpackFactory, gulpAceFactory, webpackAceFactory) {
-		$scope.gulpIngredient = null;
-		$scope.webpackIngrendient = null;
+	.controller('MainController', ['$scope', '$http',  'GulpFactory', 'WebpackFactory', 'GulpAceFactory', 'WebpackAceFactory', '$location',
+	function($scope, $http, gulpFactory, webpackFactory, gulpAceFactory, webpackAceFactory, $location) {
+		$scope.gulpIngredient;
+		$scope.webpackIngrendient;
 		// Ace editor model binding
 		$scope.aceChecked;
-
 
 		//Filter options
 		$scope.filterOptions = false;
 		$scope.textFilter = null;
 		$scope.numLimit = null;
+		// initial population of gulp and webpack recipe lists
+		gulpFactory.getRecipesList().then(function(res) {
+			console.log('initial populate of gulp list');
+			// on success write list into the factory
+			gulpFactory.recipesList = res.data;
+		});
+		webpackFactory.getRecipesList().then(function(res) {
+			console.log('initial populate of webpack list');
+			// on success write list into the factory
+			webpackFactory.recipesList = res.data;
+		});
 
 		$scope.searchGulp = function(gulpIngredient) {
+			$location.path('/recipes');
 			if (gulpIngredient) {
 				gulpFactory.getRecipe(gulpIngredient);
 				return;
@@ -38,6 +49,7 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		};
 
 		$scope.searchWebpack = function(webpackIngredient) {
+			$location.path('/webpack-recipe');
 			if (webpackIngredient) {
 				webpackFactory.getRecipe(webpackIngredient);
 				return;

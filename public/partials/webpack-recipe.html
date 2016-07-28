@@ -4,11 +4,15 @@
 			<div class="recipe-container">
 					<h3 class="ingredients-title">{{header}}</h3>
 					<ul class="recipe-list">
-							<li class="recipe" ng-repeat="recipe in recipesList" ng-click="searchWebpack(recipe)">
+							<li class="recipe" ng-repeat="recipe in recipesList | filter:webpackIngredient" ng-click="searchWebpack(recipe)">
 									<h4 class="recipe-title">{{recipe}}</h4>
 							</li>
 					</ul>
-					<button ng-click="test()">Test</button>
+					<!-- <button ng-click="test()">Test</button> -->
+					<div class="download-config">
+	          <button class='config-download btn btn-default' ng-click="download()" value="Download Config" download>Build</button>
+	          <a href="./scaffold.tar.gz" class="btn btn-default" role="button" download><span class="glyphicon glyphicon-cloud-download"></span>Download</a>
+        </div>
 			</div>
 			</div>
 		<div class="col-xs-12 col-sm-6">
