@@ -6,3 +6,4 @@ npm-debug.log
 /public/css/style.css
 /server/releaseDir/gulpfile.js
 /public/components/bower
+/server/gulpFragments/*
