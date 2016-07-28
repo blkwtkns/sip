@@ -31,10 +31,6 @@ angular.module('app', [
 function configFunction($routeProvider) {
 		// all routes are currently from the public folder
 		$routeProvider
-			// .when('/', {
-			// 	templateUrl: './partials/home-partial.html',
-			// 	controller: ''
-			// })
 	    .when('/webpack-recipe', {
 	      templateUrl: './partials/webpack-recipe.html',
 	      controller: 'WebpackController'
