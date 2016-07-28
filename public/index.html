@@ -18,7 +18,7 @@
 	<ng-include src="partials/test2.html"></ng-include>
 
 	<!-- Static navbar -->
-  <nav class="navbar navbar-default navbar-static-top">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -30,11 +30,11 @@
         <a class="navbar-brand" href="#"><img src="./img/SipLogo_01.png" /></a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+        <!-- <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
-        </ul>
+        </ul> -->
         <ul class="nav navbar-nav navbar-right">
         	<li><a href="../navbar-fixed-top/">Binh</a></li>
         	<li><a href="../navbar-fixed-top/">Blake</a></li>
@@ -45,12 +45,13 @@
     </div>
   </nav>
 
-	<div class="header">
-		<img class="sip-logo" src="./img/SipLogo_02.png" />
-		<h4 class="title">A Thirsty Gulp and Webpack Generator</h4>
-	</div>
 
 	<div ng-controller="MainController as MainCtrl" class="container cf">
+		<div class="header">
+			<img class="sip-logo" src="./img/SipLogo_02.png" />
+			<h4 class="title">A Thirsty Gulp and Webpack Generator</h4>
+		</div>
+		
 	  <form ng-submit="searchGulp()">
 	    <div class="ingredient-actions">
 	      <input class="ingredient" type="text" placeholder="Sip on Gulp" name="ingredient" ng-model="gulpIngredient">
