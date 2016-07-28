@@ -2,6 +2,9 @@ angular.module('Slurpee.WebpackController', ['ngRoute'])
 	.controller('WebpackController', ['$scope', 'WebpackFactory', function($scope, webpackFactory) {
 		$scope.header = 'Webpack Sip Recipes';
 
+		// Assign class name for ng-animate between views
+		$scope.configView = 'webpack-view';
+
 		$scope.singleRecipe = webpackFactory.imgMinRecipe;
 
 		$scope.recipesList = webpackFactory.recipesList;

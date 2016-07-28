@@ -2,6 +2,9 @@ angular.module('Slurpee.GulpController', ['ngRoute'])
 	.controller('GulpController', ['$scope', 'GulpFactory', '$location', function($scope, gulpFactory, $location) {
 		$scope.header = 'Gulp Sip Recipes';
 
+		// Assign class name for ng-animate between views
+		$scope.configView = 'gulp-view';
+
 		$scope.singleRecipe = gulpFactory.imgMinRecipe;
 
 		$scope.recipesList = gulpFactory.recipesList;
