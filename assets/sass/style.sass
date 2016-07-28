@@ -29,6 +29,7 @@ h1, h2, h3, h4, h5, p, ul, li
 .code-title,
 .ingredients-title
   padding-bottom: 20px
+  text-align: center
 
 .ace-container
   margin: 10px 0
@@ -152,19 +153,75 @@ ul
   -webkit-box-shadow: 0 5px 3px 3px #ccc
   box-shadow: 0 5px 3px 3px #ccc
 
-.recipe.ng-enter
-  -webkit-transition: .5s ease-in-out all
-  transition: .5s ease-in-out all
-  opacity: 0
+// .recipe.ng-enter
+//   -webkit-transition: .5s ease-in-out all
+//   transition: .5s ease-in-out all
+//   opacity: 0
 
-.recipe.ng-enter-active
-  opacity: 1
+// .recipe.ng-enter-active
+//   opacity: 1
 
 .recipe:nth-child(4n)
   margin-right: 0
 
 .recipe-display
   text-align: left
+
+.download-config
+  text-align: center
+
+// Janky ng-animate on route change
+// need to fix later
+
+.webpack-view.ng-enter,
+.gulp-view.ng-enter
+  animation: fadeIn .2s ease-in-out
+  animation-delay: .2s
+
+.webpack-view.ng-leave,
+.gulp-view.ng-leave
+  animation: fadeOut .2s ease-in-out
+
+
+/* fade in */
+@keyframes fadeIn
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@-moz-keyframes fadeIn
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@-webkit-keyframes fadeIn
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+
+/* fade out */
+@keyframes fadeOut
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
+@-moz-keyframes fadeOut
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
+@-webkit-keyframes fadeOut
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
 
 @media only screen and (max-width: 1092px)
   .recipe
