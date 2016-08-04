@@ -13,24 +13,24 @@ app.use(bodyParser.json());
 
 app.route('/gulp-tasks')
     .get(function(req, res, next) {
-        console.log('/gulp-tasks');
+        // console.log('get','/gulp-tasks');
         // gets all the files names in client/gulp-tasks and trims out the .js ending
         fs.readdir('./client/gulp-tasks', function(err, files) {
             if (err) {
-                console.log(err);
+                // console.log(err);
                 res.send('');
             } else {
                 files = files.map(function(element) {
                     return element.replace(/\.[^/.]+$/, "");
                 });
-                console.log('files array');
-                console.log(files);
+                // console.log('files array');
+                // console.log(files);
                 res.json(files);
             }
         });
     })
     .post(function(req, res, next) {
-        console.log(req.body);
+        // console.log('post gulptasks', req.body);
         var name = req.body.ingredient;
         var readStream = fs.createReadStream(path.join('./client/gulp-tasks/' + name + '.js'));
         var writeStream = fs.createWriteStream(path.join('./server/gulpFragments/' + name + '.js'));
@@ -41,8 +41,8 @@ app.route('/gulp-tasks')
             writeStream.write(chunk);
         });
         readStream.on('end', function() {
-            console.log('ended');
-            console.log(data);
+            // console.log('ended');
+            // console.log(data);
             writeStream.close();
             res.send(data);
         });
@@ -52,24 +52,24 @@ app.route('/gulp-tasks')
 //webpack functionality
 app.route('/webpack-tasks')
     .get(function(req, res, next) {
-        console.log('/webpack-tasks');
+        // console.log('get', '/webpack-tasks');
         // gets all the files names in client/gulp-tasks and trims out the .js ending
         fs.readdir('./client/webpack-tasks', function(err, files) {
             if (err) {
-                console.log(err);
+                // console.log(err);
                 res.send('');
             } else {
                 files = files.map(function(element) {
                     return element.replace(/\.[^/.]+$/, "");
                 });
-                console.log('files array');
-                console.log(files);
+                // console.log('files array');
+                // console.log(files);
                 res.json(files);
             }
         });
     })
     .post(function(req, res, next) {
-        console.log(req.body);
+        // console.log('post webpack', req.body);
         var name = req.body.ingredient;
         var readStream = fs.createReadStream(path.join('./client/webpack-tasks/' + name + '.js'));
         var writeStream = fs.createWriteStream(path.join('./server/webpackFrags/' + name + '.js'));
@@ -81,8 +81,8 @@ app.route('/webpack-tasks')
         });
 
         readStream.on('end', function() {
-            console.log('ended');
-            console.log(data);
+            // console.log('ended');
+            // console.log(data);
             writeStream.close();
             res.send(data);
         });
@@ -92,6 +92,7 @@ app.route('/webpack-tasks')
 //end point at `/compress`
 app.get('/download', function(req, res) {
 
+  // console.log('get download')
     //first check if gulpFragments folder is empty
     fs.readdir('./server/gulpFragments', function(err, files) {
         // console.log(files.length, 'hi mom');
