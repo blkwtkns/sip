@@ -1,14 +1,15 @@
-angular.module('Slurpee.MainController', ['ngRoute'])
+angular
+	.module('Slurpee.MainController', ['ngRoute'])
 	.controller('MainController', ['$scope', '$http',  'GulpFactory', 'WebpackFactory', 'GulpAceFactory', 'WebpackAceFactory', '$location',
 	function($scope, $http, gulpFactory, webpackFactory, gulpAceFactory, webpackAceFactory, $location) {
 		$scope.gulpIngredient;
 		$scope.webpackIngrendient;
-		// Ace editor model binding
 
 		//Filter options
 		$scope.filterOptions = false;
 		$scope.textFilter = null;
 		$scope.numLimit = null;
+
 		// initial population of gulp and webpack recipe lists
 		gulpFactory.getRecipesList().then(function(res) {
 			console.log('initial populate of gulp list');
@@ -37,8 +38,7 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 			}
 			if ($scope.gulpIngredient === '') return;
 			var isInList = false;
-			console.log($scope.gulpIngredient);
-			console.log(gulpFactory.recipesList);
+
 			for (var i = 0; i < gulpFactory.recipesList.length; i++) {
 				if (gulpFactory.recipesList[i] === $scope.gulpIngredient) {
 					isInList = true;
@@ -49,39 +49,38 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 				console.log('gulpIngredient not in list');
 				return;
 			}
-			console.log($scope.gulpIngredient);
+
 			gulpFactory.getRecipe($scope.gulpIngredient);
 			$scope.clearSearch();
-
 		};
 
 		$scope.searchWebpack = function(webpackIngredient) {
-			console.log(webpackAceFactory.code);
 			$location.path('/webpack-recipe');
 			if (webpackIngredient) {
 				webpackFactory.getRecipe(webpackIngredient);
 				return;
 			}
+
 			if ($scope.webpackIngrendient === '') return;
 			var isInList = false;
-			console.log($scope.webpackIngrendient);
-			console.log(webpackFactory.recipesList);
+
 			for (var i = 0; i < webpackFactory.recipesList.length; i++) {
 				if (webpackFactory.recipesList[i] === $scope.webpackIngrendient) {
 					isInList = true;
 					break;
 				}
 			}
+
 			if (isInList === false) {
 				console.log('webpackIngrendient not in list');
 				return;
 			}
-			console.log($scope.webpackIngrendient);
+
 			webpackFactory.getRecipe($scope.webpackIngrendient);
 			$scope.clearSearch2();
-
 		};
 
+		// Clears search input field on submit
 		$scope.clearSearch = function() {
 			$scope.gulpIngredient = '';
 		};
@@ -90,12 +89,7 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 			$scope.webpackIngrendient = '';
 		};
 
-		$scope.clearFilter = function() {
-			$scope.textFilter = "";
-		};
-
     $scope.download = function(){
-      console.log('wtf');
       gulpFactory.getDownload();
     };
 
