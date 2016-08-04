@@ -1,5 +1,5 @@
 angular.module('Slurpee.WebpackFactory', ['ngRoute'])
-  .factory('WebpackFactory', ['$http', function($http) {
+  .factory('WebpackFactory', ['$http', 'WebpackAceFactory', function($http, webpackAceFactory) {
     return {
       recipesList: [],
       getRecipesList: function() {
@@ -15,6 +15,8 @@ angular.module('Slurpee.WebpackFactory', ['ngRoute'])
         return $http.post('/webpack-tasks', data)
           .then(function(res) {
             console.log(res.data);
+            webpackAceFactory.code += res.data + '\n';
+            console.log(webpackAceFactory.code);
           });
       },
       test: function() {
