@@ -1,4 +1,6 @@
-angular.module('Slurpee.WebpackFactory', ['ngRoute'])
+// sends post request to server which reads all the webpack task files
+angular
+  .module('Slurpee.WebpackFactory', ['ngRoute'])
   .factory('WebpackFactory', ['$http', 'WebpackAceFactory', function($http, webpackAceFactory) {
     return {
       recipesList: [],
@@ -16,16 +18,10 @@ angular.module('Slurpee.WebpackFactory', ['ngRoute'])
           .then(function(res) {
             console.log(res.data);
             webpackAceFactory.code += res.data + '\n';
-            console.log(webpackAceFactory.code);
           });
       },
       test: function() {
         console.log(this.recipesList);
       }
-
     };
-
-
-
-
   }]);

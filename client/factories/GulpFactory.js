@@ -1,7 +1,7 @@
 // sends post request to server which reads all the gulp task files
-angular.module('Slurpee.GulpFactory', ['ngRoute'])
+angular
+  .module('Slurpee.GulpFactory', ['ngRoute'])
   .factory('GulpFactory', ['$http', 'GulpAceFactory', function($http, gulpAceFactory) {
-
     return {
       recipesList: [],
       getRecipesList: function() {
@@ -26,10 +26,5 @@ angular.module('Slurpee.GulpFactory', ['ngRoute'])
       getDownload: function(){
         return $http.get('/download');
       }
-
     };
-
-
-
-
   }]);

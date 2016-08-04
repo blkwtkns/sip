@@ -1,4 +1,5 @@
-angular.module('Slurpee.WebpackAceController', ['ngRoute'])
+angular
+	.module('Slurpee.WebpackAceController', ['ngRoute'])
 	.controller('WebpackAceController', ['$scope', 'WebpackAceFactory',
 	function($scope, webpackAceFactory) {
 		setInterval(function () {
@@ -8,7 +9,6 @@ angular.module('Slurpee.WebpackAceController', ['ngRoute'])
 		}, 100);
 
 		$scope.clear = function() {
-			console.log('')
 			gulpAceFactory.code = 'var webpack = require("webpack");\n\n';
 			$scope.code = 'var webpack = require("webpack");\n\n';
 		};
