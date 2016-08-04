@@ -17,14 +17,19 @@
     </div>
     <div class="col-xs-12 col-sm-6">
       <h3 class="code-title">Gulpfile.js</h3>
-      <div class="ace-container" ng-readonly="checked" ng-model="aceCode" ui-ace="{
+      <div class="ace-container" ng-readonly="checked" ng-model="code" ui-ace="{
           useWrapMode : true,
           theme:'monokai',
-          mode: 'javascript'
+          mode: 'javascript',
+          onLoad: aceLoaded,
+          onChange: aceChanged
         }">
+
+        </div>
       </div>
-      <div>
+      <div class="read-only">
         <span>Check make file Readonly: <input type="checkbox" ng-model="checked" ></span>
+        <button ng-click="clear()">Clear</button>
       </div>
     </div>
   </div>

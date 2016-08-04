@@ -1,6 +1,6 @@
 angular.module('Slurpee.GulpAceFactory', ['ngRoute'])
   .factory('GulpAceFactory', [function() {
     return {
-      acecode: ''
+      code: "var gulp = require('gulp');\n\n"
     };
   }]);
