@@ -12,8 +12,8 @@ angular.module('Slurpee.WebpackController', ['ngRoute'])
 		webpackFactory.getRecipesList().then(function(res) {
 			$scope.recipesList = res.data;
 			// on success write list into the factory
-			console.log('webpack');
-			console.log(res.data);
+			// console.log('webpack');
+			// console.log(res.data);
 			webpackFactory.recipesList = res.data;
 		});
 

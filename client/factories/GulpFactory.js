@@ -16,15 +16,20 @@ angular.module('Slurpee.GulpFactory', ['ngRoute'])
         };
         return $http.post('/gulp-tasks', data)
           .then(function(res) {
-            console.log(res.data);
+            // console.log(res.data);
             gulpAceFactory.code += res.data + '\n';
+            console.log('hi', gulpAceFactory.code);
           });
       },
       test: function() {
-        console.log(this.recipesList);
+        // console.log(this.recipesList);
       },
       getDownload: function(){
-        return $http.get('/download');
+        const payload = {
+          finalRecipe: gulpAceFactory.code,
+          type: 'gulpfile.js'
+        };
+        return $http.post('/download', payload);
       }
 
     };

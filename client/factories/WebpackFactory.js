@@ -14,10 +14,17 @@ angular.module('Slurpee.WebpackFactory', ['ngRoute'])
         };
         return $http.post('/webpack-tasks', data)
           .then(function(res) {
-            console.log(res.data);
+            // console.log(res.data);
             webpackAceFactory.code += res.data + '\n';
             console.log(webpackAceFactory.code);
           });
+      },
+      getDownload: function(){
+        const payload = {
+          finalRecipe: webpackAceFactory.code,
+          type: 'webpack.config.js'
+        };
+        return $http.post('/download', payload);
       },
       test: function() {
         console.log(this.recipesList);

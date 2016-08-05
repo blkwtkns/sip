@@ -11,12 +11,12 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		$scope.numLimit = null;
 		// initial population of gulp and webpack recipe lists
 		gulpFactory.getRecipesList().then(function(res) {
-			console.log('initial populate of gulp list');
+			// console.log('initial populate of gulp list');
 			// on success write list into the factory
 			gulpFactory.recipesList = res.data;
 		});
 		webpackFactory.getRecipesList().then(function(res) {
-			console.log('initial populate of webpack list');
+			// console.log('initial populate of webpack list');
 			// on success write list into the factory
 			webpackFactory.recipesList = res.data;
 		});
@@ -37,8 +37,8 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 			}
 			if ($scope.gulpIngredient === '') return;
 			var isInList = false;
-			console.log($scope.gulpIngredient);
-			console.log(gulpFactory.recipesList);
+			// console.log($scope.gulpIngredient);
+			// console.log(gulpFactory.recipesList);
 			for (var i = 0; i < gulpFactory.recipesList.length; i++) {
 				if (gulpFactory.recipesList[i] === $scope.gulpIngredient) {
 					isInList = true;
@@ -49,14 +49,14 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 				console.log('gulpIngredient not in list');
 				return;
 			}
-			console.log($scope.gulpIngredient);
+			// console.log($scope.gulpIngredient);
 			gulpFactory.getRecipe($scope.gulpIngredient);
 			$scope.clearSearch();
 
 		};
 
 		$scope.searchWebpack = function(webpackIngredient) {
-			console.log(webpackAceFactory.code);
+			// console.log(webpackAceFactory.code);
 			$location.path('/webpack-recipe');
 			if (webpackIngredient) {
 				webpackFactory.getRecipe(webpackIngredient);
@@ -64,8 +64,8 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 			}
 			if ($scope.webpackIngrendient === '') return;
 			var isInList = false;
-			console.log($scope.webpackIngrendient);
-			console.log(webpackFactory.recipesList);
+			// console.log($scope.webpackIngrendient);
+			// console.log(webpackFactory.recipesList);
 			for (var i = 0; i < webpackFactory.recipesList.length; i++) {
 				if (webpackFactory.recipesList[i] === $scope.webpackIngrendient) {
 					isInList = true;
@@ -73,7 +73,7 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 				}
 			}
 			if (isInList === false) {
-				console.log('webpackIngrendient not in list');
+				// console.log('webpackIngrendient not in list');
 				return;
 			}
 			console.log($scope.webpackIngrendient);
@@ -95,8 +95,11 @@ angular.module('Slurpee.MainController', ['ngRoute'])
 		};
 
     $scope.download = function(){
-      console.log('wtf');
-      gulpFactory.getDownload();
+      if($location.path() === '/recipes'){
+        gulpFactory.getDownload();
+      }else{
+        webpackFactory.getDownload();
+      }
     };
 
 	}]);
