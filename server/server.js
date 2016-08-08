@@ -76,12 +76,9 @@ app.route('/webpack-tasks')
 //end point at `/download`
 app.post('/download', function(req, res) {
 
-    var writeStream = fs.createWriteStream('./server/releaseDir/' + req.body.type);
-    var written = fs.writeFile('./server/temp/temp.js', req.body.finalRecipe, function(err) {
+    fs.writeFile('./server/releaseDir/' + req.body.type, req.body.finalRecipe, function(err) {
         if (err) console.log(err);
     })
-    var readStream = fs.createReadStream('./server/temp/temp.js');
-    readStream.pipe(writeStream);
 
     //tar.gz compression
     targz().compress('./server/releaseDir', './public/scaffold.tar.gz', function(err) {
