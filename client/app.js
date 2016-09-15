@@ -29,14 +29,14 @@ angular.module('app', [
 	.config(['$routeProvider', configFunction]);
 
 function configFunction($routeProvider) {
-	// all routes are currently from the public folder
-	$routeProvider
-    .when('/webpack-recipe', {
-      templateUrl: './partials/webpack-recipe.html',
-      controller: 'WebpackController'
-    })
-		.when('/recipes', {
-			templateUrl: './partials/recipes.html',
-			controller: 'GulpController'
-		});
-}
+  	// all routes are currently from the public folder
+		$routeProvider
+	    .when('/webpack-recipe', {
+	      templateUrl: './partials/webpack-recipe.html',
+	      controller: 'WebpackController'
+	    })
+			.when('/recipes', {
+				templateUrl: './partials/recipes.html',
+				controller: 'GulpController'
+			});
+	}

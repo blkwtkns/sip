@@ -11,15 +11,7 @@ describe('Testing AngularJS Test Suite', function(){
 	          rootScope = $rootScope;
 	          scope = $rootScope.$new();
 	          ctrl = $controller('GulpAceController', {$scope:scope});
-	          timeout = $timeout
+	          timeout = $timeout;
 	        }))
-
-    describe('Testing existence and default values of scope properties and methods on GulpAceController', function() {
-        it('should have scope property header', function() {
-          expect(scope.aceCode).toBeDefined();
-        });
-			});
-
-
     });
 });

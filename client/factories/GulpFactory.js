@@ -16,14 +16,10 @@ angular
         };
         return $http.post('/gulp-tasks', data)
           .then(function(res) {
-            console.log(res.data);
             gulpAceFactory.code += res.data + '\n';
           });
       },
-      test: function() {
-        console.log(this.recipesList);
-      },
-      getDownload: function(){
+      getDownload: function() {
         return $http.get('/download');
       }
     };

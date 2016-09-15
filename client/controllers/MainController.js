@@ -3,7 +3,8 @@ angular
 	.controller('MainController', ['$scope', '$http',  'GulpFactory', 'WebpackFactory', 'GulpAceFactory', 'WebpackAceFactory', '$location',
 	function($scope, $http, gulpFactory, webpackFactory, gulpAceFactory, webpackAceFactory, $location) {
 		$scope.gulpIngredient;
-		$scope.webpackIngrendient;
+		$scope.webpackIngredient;
+		// Ace editor model binding
 
 		//Filter options
 		$scope.filterOptions = false;
@@ -86,8 +87,8 @@ angular
 		};
 
 		$scope.clearSearch2 = function() {
-			$scope.webpackIngrendient = '';
-		};
+			$scope.webpackIngredient = '';
+		}
 
     $scope.download = function(){
       gulpFactory.getDownload();
