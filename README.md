@@ -1,4 +1,4 @@
-# gulp-angular-for-newbs!
+# Sip!
 
 Tailor your own gulpfile or webpack file with this web-based generator, and receive a scaffolded project directory which includes either the gulpfile or webpack file that you configured.
 
